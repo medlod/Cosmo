@@ -28,6 +28,6 @@ After you have gotten yourself a host you need to Install the following to make 
 <br> NPM Package <a href="https://www.npmjs.com/package/discordbot-script"> discordbot-script </a>
 
 You can install the npm package by
-<b> npm install discordbot-script </b>
+<br> <b> npm install discordbot-script </b>
 
 After this just add your bot token in the main file and start the hosting as using the index.js file as your main and your good to go!
