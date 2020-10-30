@@ -17,19 +17,14 @@ $color[$random[1;99999]]
 $title[Help Commands]
 $description[🔰**Basic Commands**🔰
 > covid | rank | leaderboard | github | ‎remind | profile | hex | rgb | count | poll | ‎suggest | binary | base64 | userinfo | checkwarn | ping | infoinvite | serverinfo | ‎botinfo | ‎afk on | afk off | support
-
 🔪**Fun Commands**🔪
-> say | math | hug | neko | lick | kiss | pat | cat | dog | fox | koala | redpanda | panda | bird | cat fact | dog fact | fox fact | koala fact | panda fact | bird fact | topic | stonks | tickle | poke | youtube | trump | snipe | makememe| table-flip | clyde | pokedex | cuddle | weather | ship | facts | amongus | trash | watermeme | magik | eject | viewcolor| cmm | lyrics| meme | preview | roll | wink | avatar‎ | 8ball‎ | kill | rps‎ | slap‎ | achievement | skin | exam | lowercase | ttt help | uppercase |
-
+> say | math | hug | neko | lick | kiss | generate | pat | cat | dog | fox | koala | redpanda | panda | bird | cat fact | dog fact | fox fact | koala fact | panda fact | bird fact | topic | stonks | tickle | poke | flip | car | youtube | trump | snipe | makememe| table-flip | clyde | pokedex | cuddle | weather | ship | facts | amongus | trash | watermeme | magik | eject | viewcolor| cmm | lyrics| meme | preview | roll | wink | avatar‎ | 8ball‎ | kill | rps‎ | slap‎ | achievement | skin | exam | lowercase | ttt help | uppercase |
 💳**Economy Commands**💳
 > work | ‎bal | crime | fish | gift | beg | shop | inv | dep or deposit | with or withdraw‎ | daily | lb or leaderboard cash | lb or leaderboard bank |
-
 🎃**Staff Commands**🎃
 > purge‎ | announce | nick | ban | massrole | mute | unmute‎ | warn | antilinks | lock | setslowmode | createrole‎ | checkwarn‎ | setwarns | banid‎ | unbanid‎ | kick‎ | role‎ | takerole‎ | createchannel | deletechannel |
-
 📛**Bot Config Commands**📛
-> setsuggest‎ | setchatchannel | setmodlogs | setmutedrole | setwelcome | chatmode |
-
+> setsuggest‎ | setmodlogs | setmutedrole | setwelcome |
 **Join our Support Server!**
 {hyper:Click Here:https://cosmobot.ml/support}]
   `
@@ -105,19 +100,14 @@ bot.Command({
     code: `$botTyping
 $title[Bot Info]
 $description[***Bot Information***
-
 🔰**Ping**🔰
 $ping ms
-
 👑**Uptime**👑
 $uptime
-
 👒**Bot Owner**👒
 <@427109850368049162>
-
 🔔**RAM Usage** 🔔
 Currently Using $memory MB of RAM!]
-
 $footer[Made By RileCraft]
 $color[$random[1;9999]]
 $addTimestamp`
@@ -142,10 +132,8 @@ bot.Command({
 $color[$random[1;9999]]
 $description[👛**Wallet**👛
 $$getVar[money;$mentioned[1;yes]]
-
 💳**Bank**💳
 $$getVar[bank;$mentioned[1;yes]]
-
 💸**NetWorth**💸
 $$sum[$getVar[money;$mentioned[1;yes]];$getVar[bank;$mentioned[1;yes]]]]
 $addTimestamp`
@@ -236,7 +224,6 @@ $description[Search Google...
 {hyper:Click to see results!:https://www.google.com/search?q=$replaceText[$message[]; ;+]}
 Search: **$message[]**
 Author: **$username[$authorID]**
-
 **PREVIEW**]
 $addTimestamp
 $deletecommand[1ms]
@@ -338,7 +325,6 @@ bot.Command({
     code: `$suppressErrors[**Correct usage: /roll (small number) (big number)**]
 $description[📥**Given Numbers**📥
 $message[1] , $message[2]
-
 📤**Random Number Generated**📤
 $random[$message[1];$message[2]]]
 $title[🎲Random Numbers!🎲]
@@ -492,15 +478,10 @@ bot.Command({
     code: `$onlyIf[$message[]!=;Please provide some text]
 $title[Result]
 $description[. 　　　。　　　　•　 　ﾟ　　。 　　.
-
 　　　.　　　 　　.　　　　　。　　 。　. 　
-
 .　　 。　　　　　 ඞ 。 . 　　 • 　　　　•
-
 　　ﾟ　　 $message[] $randomText[was not An Impostor;was An Impostor].　 。　.
-
 　　'　　　 $randomText[1;2;0] Impostor remains 　 　　。
-
 　　ﾟ　　　.　　　.　　　　.　 .]
 $color[$random[11111;99999]]`
 })
@@ -569,25 +550,18 @@ bot.Command({
     code: `$botTyping
 $color[$random[11111;99999]]
 $description[__ ** 👤User info👤 ** __
-
 ** 📙Username: **
 $username[$mentioned[1;yes]]
-
 ** 📘UserID: **
 $userID[$username[$mentioned[1;yes]]]
-
 ** ✅User Badges: **
 $getUserBadges[$mentioned[1;yes]]
-
 ** 🔎Tag: **
 $discriminator[$mentioned[1;yes]]
-
 **Boosting Server**
 $isBoosting[$mentioned[1;yes]]
-
 ** 🤖Highest Role: **
 <@&$highestRole[$mentioned[1;yes]]>
-
 ** 🔮Account Creation Date**
 $creationDate[$mentioned[1;yes]]]
 $addTimestamp`
@@ -599,41 +573,23 @@ bot.Command({
 $title[Server Info]
 $description[**SERVER**
 👑 | Server owner: <@$ownerID>
-
 🛠 | Server Name: $serverName[$guildID]
-
 🗺 | Region: $region
-
 🆔 | ID: $guildID
-
 🛡 | Level of protection: $serverVerificationLvl
-
  MEMBER
-
 🗞 | All Members: $membersCount[]
-
 📛 | Online: $membersCount[online]
-
 📟 | Offline: $membersCount[offline]
-
 🎃 | DoNotDisturb: $membersCount[dnd]
-
 👒 | Idle: $membersCount[idle]
-
 🔭 | Humans: $membersCount[human]
-
 🤖 | Bots: $membersCount[bot]
-
  OTHER
-
 🔰 | Total channels: $channelCount
-
 📌 | Category count: $categoryCount
-
 🙋 | Invite to the server: $getServerInvite[$guildID]
-
 📥 | Server boost count: $serverBoostCount
-
 📮 | Total Emoji: $emoteCount]
 $image[$serverIcon]`
 })
@@ -743,7 +699,6 @@ $description[
 <@$authorID>
 **Banned:**
 $username[$mentioned[1]]#$discriminator[$mentioned[1]]
-
 Reason:$noMentionMessage[]]
 $onlyPerms[ban;Missing Ban Member Perm]`
 })
@@ -759,7 +714,6 @@ $description[
 <@$authorID>
 **Banned:**
 $username[$mentioned[1]]
-
 Reason:$noMentionMessage[]]
 $deletecommand[100ms]
 $onlyPerms[ban;Missing Ban Member Perm]`
@@ -784,7 +738,6 @@ $onlyPerms[ban; **Missing Bans Permissions**]
 $useChannel[$getServerVar[ModLogs]]
 $title[User Unbanned!]
 $description[User Unbanned: $username[$noMentionMessage[1]#$discriminator[$noMentionMessage[1]]]
-
 Moderator: <@$authorID>]
 $deletecommand[1ms]
 $botTyping
@@ -871,9 +824,7 @@ bot.Command({
     name: "/kick",
     code: `$botTyping
 $description[Person Kicked: $username[$mentioned[1]]
-
 Moderator: $username[$authorID]
-
 reason: $noMentionMessage[]]
 $deletecommand[1ms]
 $title[Someone has been Kicked!]
@@ -889,9 +840,7 @@ bot.Command({
 $color[$random[11111;99999]]
 $title[Someone has been Kicked!]
 $description[Person Kicked: $username[$mentioned[1]]
-
 Moderator: $username[$authorID]
-
 reason: $noMentionMessage[]]
 $deletecommand[1ms]
 $onlyIf[$message[1]!=;]
@@ -901,11 +850,8 @@ bot.Command({
     name: "/mute",
     code: `
 $title[Someone has been Muted!]
-
 $description[Person Muted: <@$mentioned[1]>
-
 Moderator: $username[$authorID]
-
 reason: $noMentionMessage[]]
 $giveRole[$mentioned[1];$roleID[$getServerVar[mute]]]
 $onlyIf[$getServerVar[mute]!=;Please use /setmutedrole first!]
@@ -918,9 +864,7 @@ bot.Command({
     code: `
 $title[Someone has been Unmuted!]
 $description[Person Unmuted: <@$mentioned[1]>
-
 Moderator: $username[$authorID]
-
 reason: $noMentionMessage[]]
 $takeRole[$mentioned[1];$roleID[$getServerVar[mute]]]
 $onlyIf[$getServerVar[mute]!=;Please use /setmutedrole first!]
@@ -946,27 +890,22 @@ $description[🍻**Alcohol**🍻
 **Amount:** $getVar[alcohol;$authorID]
 **ID**  alcohol
 **Use:** /use alcohol
-
 🐟**Fishing Pole**🐟
 **Amount:** $getVar[pole;$authorID]
 **ID**  pole
 **Use:** /fish
-
 🍜**Noddles**🍜
 **Amount:** $getVar[noodle;$authorID]
 **ID**  noodle
 **Use:** /use noodle
-
 🍕**Cheesy Pizza**🍕
 **Amount:** $getVar[pizza;$authorID]
 **ID**  pizza
 **Use:** /use pizza
-
 🍫**Chocolate**🍫
 **Amount:** $getVar[chocolate;$authorID]
 **ID**  chocolate
 **Use:** /use chocolate
-
 🐠**Fish**🐠
 **Amount:** $getVar[fish;$authorID]
 **ID**  fish
@@ -989,19 +928,15 @@ $title[Welcome to our shop!]
 $description[🍻**Alcohol**
 **Price:** $1k
 **Code:** /buy alcohol
-
 🐟**Fishing Pole**🐟
 **Price:** $500
 **Code:** /buy pole
-
 🍜**Tasty Noodles**🍜
 **Price:** $200
 **Code:** /buy noodle
-
 🍕**Cheesy Pizza**🍕
 **Price:** $120
 **Code:** /buy pizza
-
 🍫**Tasty Chocolate**🍫
 **Price:** $700
 **Code:** /buy chocolate]
@@ -1127,7 +1062,6 @@ bot.Command({
     code: `$footer[Author: $username[];$userAvatar[$authorID]]
 $description[**Numbers**
 $replaceText[$message[]; ;,]
-
 **Answer**
 $sum[$message[1];$message[2]]]
 $title[Maths Time!]
@@ -1138,10 +1072,8 @@ bot.Command({
     name: "/sub",
    aliases: ["/subtract", "/subtraction"],
     code: `$footer[Author: $username[];$userAvatar[$authorID]]
-
 $description[**Numbers**
 $replaceText[$message[]; ;,]
-
 **Answer**
 $sub[$message[1];$message[2]]]
 $title[Maths Time!]
@@ -1154,7 +1086,6 @@ bot.Command({
     code: `$footer[Author: $username[];$userAvatar[$authorID]]
 $description[**Numbers**
 $replaceText[$message[]; ;,]
-
 **Answer**
 $multi[$message[1];$message[2]]]
 $title[Maths Time!]
@@ -1167,7 +1098,6 @@ bot.Command({
     code: `$footer[Author: $username[];$userAvatar[$authorID]]
 $description[**Numbers**
 $replaceText[$message[]; ;,]
-
 **Answer**
 $divide[$message[1];$message[2]]]
 $title[Maths Time!]
@@ -1229,10 +1159,8 @@ $color[$random[11111;99999]]
 $description[
 **Banned By:**
 <@$authorID>
-
 **Banned:**
 $username[$message[1]]
-
 Reason: $messageSlice[>1]]
 $deletecommand[100ms]
 $onlyPerms[ban;Missing Ban Member Perm]`
@@ -1425,16 +1353,12 @@ bot.Command({
     code: `$thumbnail[$userAvatar[$mentioned[1;yes]]]
 $description[**🔪Name🔪**
 $username[$mentioned[1;yes]]
-
 🎉🎊**Birthday**🎉🎊
 $getVar[birthday;$mentioned[1;yes]]
-
 🐱**Pets Name**🐱
 $getVar[petname;$mentioned[1;yes]]
-
 👒**Favourite Color**👒
 $getVar[favcolor;$mentioned[1;yes]]
-
 **Server Level**
 $getUserVar[level;$mentioned[1;yes]]]`
 })
@@ -1571,7 +1495,7 @@ $onlyIf[$message[1]==fact;]`
 })
 bot.Command({
     name: "/lyrics",
-    code: `$description[$api[https://some-random-api.ml/lyrics?title=$replaceText[$message[]; ;%20];lyrics]]
+    code: `$description[$api[https://no-api-key.com/api/v1/ksof/lyrics?song=$replaceText[$message[]; ;%20];lyrics]]]
 $title[Lyrics of $message[]]
 $color[$random[11111;99999]]
 $onlyIf[$message[]!=;Please provide the name of the song!]`
@@ -1584,38 +1508,6 @@ $title[Image of the color $message[1]]
 $color[$random[11111;99999]]
 $onlyIf[$isValidHex[$message[1]]==true;Please choose a valid hex code without #]
 $onlyIf[$message[1]!=;Please provide the hex code of the color!]`
-})
-bot.Command({
-    name: "/chatmode",
-    code: `$setServerVar[chatmode;$message[1]]
-$description[Successfully set chat mode to $message[1]
-
-**Please set chat channel using /setchatchannel**]
-$title[ChatMode Settings]
-$color[$random[11111;99999]]
-$onlyIfMessageContains[yes;no;Please choose the options yes or no!]
-$onlyAdmin[Administrator Only!]`
-})
-bot.SpaceCommand({
-    name: "chatmode",
-    code: `$channelSendMessage[$getServerVar[chat];$api[https://some-random-api.ml/chatbot?message=$replaceText[$message[]; ;+];response]]
-$onlyIf[$getServerVar[chatmode]==yes;]
-$onlyIf[$getServerVar[chat]!=;]
-$onlyIf[$message[]!=‎;]
-$onlyIf[$message[]!=;]
-`
-})
-bot.Command({
-    name: "/setchatchannel",
-    aliases: ["/set-chat-channel"],
-    code: `$setServerVar[chat;$mentionedChannels[1]]
-$addTimestamp
-$footer[Command by $username[];$userAvatar[$authorID]]
-$description[Successfully set chat channel to <#$mentionedChannels[1]>]
-$title[Chat Channel Settings]
-$color[$random[11111;99999]]
-$onlyIf[$message[1]!=;Please mention a channel!]
-$onlyAdmin[Admin Only!]`
 })
 bot.Command({
     name: "/wink",
@@ -1647,7 +1539,6 @@ bot.Command({
     code: `$footer[Requested by $username[];$userAvatar[$authorID]]
 $description[**Input Text**
 $messageSlice[>1]
-
 **Output Binary**
 $api[https://some-random-api.ml/binary?text=$replaceText[$messageSlice[>1]; ;+];binary]]
 $title[Binary Conversion]
@@ -1660,7 +1551,6 @@ bot.Command({
     code: `$footer[Requested by $username[];$userAvatar[$authorID]]
 $description[**Input Binary**
 $messageSlice[>1]
-
 **Output Text**
 $api[https://some-random-api.ml/binary?decode=$replaceText[$messageSlice[>1]; ;+];text]]
 $title[Binary Conversion]
@@ -1674,7 +1564,6 @@ bot.Command({
     code: `$footer[Requested by $username[];$userAvatar[$authorID]]
 $description[**Input Text**
 $messageSlice[>1]
-
 **Output Base64**
 $api[https://some-random-api.ml/base64?encode=$replaceText[$messageSlice[>1]; ;+];base64]]
 $title[Base64 Conversion]
@@ -1687,7 +1576,6 @@ bot.Command({
     code: `$footer[Requested by $username[];$userAvatar[$authorID]]
 $description[**Input Base64**
 $messageSlice[>1]
-
 **Output Text**
 $api[https://some-random-api.ml/base64?decode=$replaceText[$messageSlice[>1]; ;+];text]]
 $title[Base64 Conversion]
@@ -1701,7 +1589,6 @@ bot.Command({
 $description[Avaliable Binary Options
 __/binary encode__
 Encodes the provided text into binary codes.
-
 __/binary decode__
 Decodes the provided binary code into simple text.]
 $title[Binary Help]
@@ -1714,7 +1601,6 @@ bot.Command({
 $description[Avaliable Base64 Options
 __/base64 encode__
 Encodes the provided text into Base64 codes.
-
 __/base64 decode__
 Decodes the provided Base64 code into simple text.]
 $title[Base64 Help]
@@ -1771,7 +1657,6 @@ bot.Command({
   code: `$footer[Requested by $username[];$userAvatar[$authorID]]
   $description[**Input RGB Color Code**
   $message[]
-
 **Output Hex Code**
 $api[https://some-random-api.ml/canvas/hex?rgb=$replaceText[$message[]; ;,];hex]]
   $title[Color Conversion!]
@@ -1785,7 +1670,6 @@ bot.Command({
   code: `$footer[Requested by $username[];$userAvatar[$authorID]]
   $description[**Input Hex Color Code**
   $message[1]
-
 **Output RGB Code**
 __R=__ $api[https://some-random-api.ml/canvas/rgb?hex=$replaceText[$message[1]; ;,];r]
 __G=__ $api[https://some-random-api.ml/canvas/rgb?hex=$replaceText[$message[1]; ;,];g]
@@ -1800,7 +1684,6 @@ bot.Command({
   code: `$footer[Requested by $username[];$userAvatar[$authorID]]
   $description[**Number of words**
 $argsLength
-
 **Number of characters**
 $charCount]
 $title[Text Counter!]
@@ -1859,10 +1742,44 @@ $onlyIf[$message[1]==remove;]
 $onlyIf[$message[]!=;]
 $onlyPerms[manageroles;]`
 })
-bot.LoopCommand({
- name: "logs",
- code:`
-$getAuditLogs[number]
-$useChannel[$getServerVar[ModLogs]]
-`
-}, 10000)
+bot.Command({
+  name: "/flip",
+  code: `$footer[Requested by $username[]]
+$description[__**Coin**__
+$api[https://no-api-key.com/api/v1/coin-flip;coin]]
+$image[$api[https://no-api-key.com/api/v1/coin-flip;image]]
+$title[Coin Flip!]
+$color[$random[11111;99999]]`
+})
+bot.Command({
+name: "/car",
+code: `$footer[Requested by $username[]]
+$image[$api[https://no-api-key.com/api/v1/car;image]]
+$title[Car!]
+$color[$random[11111;99999]]`
+})
+bot.Command({
+  name: "/generate",
+  aliases: ["/generator"],
+  code: `$addTimestamp
+$description[All Generator Commands!
+__/generate password (length)__ == Generates a random password for you!
+
+__/generate mc10__ == Generates a random Minecraft Windows 10 Account for you!]
+$title[All Generator Commands!]
+$color[$random[11111;99999]]
+$onlyIf[$message[]==;]`
+})
+bot.Command({
+  name: "/generate",
+  code: `$footer[Requested by $username[]]
+$description[__**Password**__
+$api[https://no-api-key.com/api/v1/password?length=$message[2];password]
+
+These passwords are never stored and generated randomly.]
+$title[Random Password!]
+$color[$random[11111;99999]]
+$onlyIf[$isNumber[$message[2]]==true;Please provid a valid number]
+$onlyIf[$message[2]!=;Please provide the length of password!]
+$onlyIf[$message[1]==password;]`
+})
