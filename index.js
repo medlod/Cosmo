@@ -3,7 +3,7 @@ const Dlang = require('discordbot-script')
 const discordScript = require("discordbot-script")
 
 const bot = new discordScript({
-  token: "TOKEN",
+  token: "NTU3MjEyMTY3MTkxOTIwNjgw.XI-uRQ._y5sKYiHkZpfTubf1HCtltLVpOc",
   prefix: [""]
 })
 
@@ -16,15 +16,20 @@ bot.Command({
 $color[$random[1;99999]]
 $title[Help Commands]
 $description[🔰**Basic Commands**🔰
-> covid | rank | leaderboard | github | ‎remind | profile | hex | rgb | count | poll | ‎suggest | binary | base64 | userinfo | checkwarn | ping | infoinvite | serverinfo | ‎botinfo | ‎afk on | afk off | support
+> covid | rank | leaderboard | github | ‎ticket open | ticket close | remind | profile | vote | hex | rgb | count | poll | ‎suggest | binary | base64 | userinfo | checkwarn | ping | infoinvite | serverinfo | ‎botinfo | ‎afk on | afk off | support
+
 🔪**Fun Commands**🔪
-> say | math | hug | neko | lick | kiss | generate | pat | cat | dog | fox | koala | redpanda | panda | bird | cat fact | dog fact | fox fact | koala fact | panda fact | bird fact | topic | stonks | tickle | poke | flip | car | youtube | trump | snipe | makememe| table-flip | clyde | pokedex | cuddle | weather | ship | facts | amongus | trash | watermeme | magik | eject | viewcolor| cmm | lyrics| meme | preview | roll | wink | avatar‎ | 8ball‎ | kill | rps‎ | slap‎ | achievement | skin | exam | lowercase | ttt help | uppercase |
+> say | math | hug | neko | ipfind | lick | nitro | floor | car | kiss | pat | fml | scroll | cat | dog | fox | koala | redpanda | panda | quotes | bird | cat fact | dog fact | fox fact | koala fact | panda fact | bird fact | topic | stonks | salty | tickle | poke | youtube | trump | snipe | makememe| table-flip | clyde | pokedex | cuddle | weather | ship | facts | amongus | trash | watermeme | magik | eject | viewcolor| cmm | lyrics| meme | preview | roll | wink | avatar‎ | 8ball‎ | kill | rps‎ | slap‎ | achievement | skin | exam | lowercase | ttt help | uppercase |
+
 💳**Economy Commands**💳
 > work | ‎bal | crime | fish | gift | beg | shop | inv | dep or deposit | with or withdraw‎ | daily | lb or leaderboard cash | lb or leaderboard bank |
+
 🎃**Staff Commands**🎃
-> purge‎ | announce | nick | ban | massrole | mute | unmute‎ | warn | antilinks | lock | setslowmode | createrole‎ | checkwarn‎ | setwarns | banid‎ | unbanid‎ | kick‎ | role‎ | takerole‎ | createchannel | deletechannel |
+> purge‎ | announce | nick | ban | massrole | mute | unmute‎ | warn | antilinks | antiswearing | setbadwords | lock | setslowmode | checkwarn‎ | setwarns | banid‎ | unbanid‎ | kick‎ | role‎ | takerole‎ | createchannel | deletechannel |
+
 📛**Bot Config Commands**📛
-> setsuggest‎ | setmodlogs | setmutedrole | setwelcome |
+> setsuggest‎ | setmodlogs | setmutedrole | setwelcome | levelling | ticket setup
+
 **Join our Support Server!**
 {hyper:Click Here:https://cosmobot.ml/support}]
   `
@@ -58,6 +63,7 @@ bot.Variables({
   pole: "0",
   alcohol: "0",
   noodle: "0",
+  crown: "0",
   talk: "0",
   req: "250",
   level: "0",
@@ -71,15 +77,22 @@ bot.Variables({
   antilink: "off",
   chat: "",
   lock: "0",
-  badword: ""
+  ticketspam: "0",
+  badword: "",
+  antiswearing: "off",
+  alcohol1: "",
+  giveaway: "",
+  levelling: "on",
 })
 bot.Status({
-
         0: {
             description: "/help and $serverCount Servers!",
-            type: "LISTENING"
-
+            type: "WATCHING"
         },
+        1: {
+            description: "$allMembersCount People!",
+            type: "LISTENING"
+        }
     }, 13000)
 bot.Command({
     name: "/support",
@@ -92,22 +105,51 @@ $description[Join our support server for suggestions or reporting bugs
 })
 bot.Command({
     name: "/covid",
-    code: `$title[Covid stats of $message[]]
-$image[https://covid-img.herokuapp.com/country/$replaceText[$message[]; ;%20]]`
+    code: `$title[Covid stats of $message[1]]
+$description[**__Total Cases__**
+$api[https://coronavirus-19-api.herokuapp.com/countries/$replaceText[message[1]; ;%20];cases]
+
+**__Total Deaths__**
+$api[https://coronavirus-19-api.herokuapp.com/countries/$replaceText[message[1]; ;%20];deaths]
+
+**__Today Cases__**
+$api[https://coronavirus-19-api.herokuapp.com/countries/$replaceText[message[1]; ;%20];todayCases]
+
+__**Today Deaths**__
+$api[https://coronavirus-19-api.herokuapp.com/countries/$replaceText[message[1]; ;%20];todayDeaths]
+
+**__Total Tests__**
+$api[https://coronavirus-19-api.herokuapp.com/countries/$replaceText[message[1]; ;%20];totalTests]
+
+**__Recovered__**
+$api[https://coronavirus-19-api.herokuapp.com/countries/$replaceText[message[1]; ;%20];recovered]
+
+**__Active__**
+$api[https://coronavirus-19-api.herokuapp.com/countries/$replaceText[message[1]; ;%20];active]
+
+**__Critical__**
+$api[https://coronavirus-19-api.herokuapp.com/countries/$replaceText[message[1]; ;%20];critical]]
+$color[$random[11111;99999]]
+$onlyIf[$message[1]!=;Please provide a country!]`
 })
 bot.Command({
     name: "/botinfo",
     code: `$botTyping
 $title[Bot Info]
 $description[***Bot Information***
+
 🔰**Ping**🔰
 $ping ms
+
 👑**Uptime**👑
 $uptime
+
 👒**Bot Owner**👒
 <@427109850368049162>
+
 🔔**RAM Usage** 🔔
 Currently Using $memory MB of RAM!]
+
 $footer[Made By RileCraft]
 $color[$random[1;9999]]
 $addTimestamp`
@@ -132,8 +174,10 @@ bot.Command({
 $color[$random[1;9999]]
 $description[👛**Wallet**👛
 $$getVar[money;$mentioned[1;yes]]
+
 💳**Bank**💳
 $$getVar[bank;$mentioned[1;yes]]
+
 💸**NetWorth**💸
 $$sum[$getVar[money;$mentioned[1;yes]];$getVar[bank;$mentioned[1;yes]]]]
 $addTimestamp`
@@ -151,8 +195,8 @@ bot.Command({
     name: "/daily",
     code: `$globalCooldown[1d;**You need to wait at least 1 day between your last /daily to do this command again!**]
 $addTimestamp
-$setVar[money;$sum[$getVar[money;$authorID];$random[100;1000]];$authorID]
-$description[You have been claimed $$random[100;1000] from your daily prize!]
+$setVar[money;$sum[$getVar[money;$authorID];$random[100;500]];$authorID]
+$description[You have been claimed $$random[100;500] from your daily prize!]
 $title[Daily Claim!]
 $color[$random[11111;99999]]`
 })
@@ -187,11 +231,30 @@ $onlyIf[$message[1]!=;Please mention a channel where to announce.]
 $onlyAdmin[Admins Only!]`
 })
 bot.Command({
+  name: "/announce",
+  code: `$addTimestamp
+$description[Successfully sent your announcement to <#$mentionedChannels[1]>]
+$title[Announcer!]
+$color[$random[11111;99999]]
+$onlyIf[$message[1]!=;]
+$onlyAdmin[]`
+})
+bot.Command({
     name: "/status",
     code: `$botTyping
-$color[$random[1;99999]]
-$description[{hyper:Click here to see the status:https://mcsrvstat.us/server/$message[]}]
-$footer[Open the link to check the Live Status!]
+$color[$random[11111;99999]]
+$title[Minecraft Server Status]
+$description[**__Latency__** $api[https://mcapi.xdefcon.com/server/$message[1]/full/json;ping]
+
+__**Server Status**__ $api[https://mcapi.xdefcon.com/server/$message[1]/full/json;serverStatus]
+
+**__Server IP__** $api[https://mcapi.xdefcon.com/server/$message[1]/full/json;serverip]
+
+**__Max Players__** $api[https://mcapi.xdefcon.com/server/$message[1]/full/json;maxplayers]
+__**Online**__ $api[https://mcapi.xdefcon.com/server/$message[1]/full/json;players]
+
+__**Version**__ $api[https://mcapi.xdefcon.com/server/$message[1]/full/json;version]]
+$footer[Command by $username[];$userAvatar[$authorID]]
 $onlyIf[$message[]!=;Please use in format /status (ip)]
 $addTimestamp`
 })
@@ -224,6 +287,7 @@ $description[Search Google...
 {hyper:Click to see results!:https://www.google.com/search?q=$replaceText[$message[]; ;+]}
 Search: **$message[]**
 Author: **$username[$authorID]**
+
 **PREVIEW**]
 $addTimestamp
 $deletecommand[1ms]
@@ -276,15 +340,15 @@ $image[https://api.no-api-key.com/api/v2/trump?message=$replaceText[$message[]; 
 bot.Command({
     name: "/majik",
    aliases: ["/magic"],
-    code: `$color[$random[111111;999999]]
+    code: `$color[$random[11111;99999]]
 $image[https://api.alexflipnote.dev/filter/magik?image=$userAvatar[$mentioned[1]]]
 $onlyIf[$message[]!=;Please mention someone!]`
 })
 bot.Command({
     name: "/eject",
-    code: `$color[$random[111111;999999]]
-$image[https://vacefron.nl/api/ejected?name=$username[$mentioned[1]]+&impostor=$randomText[true;false]&crewmate=$randomText[black;blue;brown;cyan;darkgreen;lime;orange;pink;purple;red;white;yellow]]
-$onlyIf[$message!=;Please mention someone!]`
+    code: `$color[$random[11111;99999]]
+$image[https://vacefron.nl/api/ejected?name=$username[$mentioned[1;yes]]+&impostor=$randomText[true;false]&crewmate=$randomText[black;blue;brown;cyan;darkgreen;lime;orange;pink;purple;red;white;yellow]]
+$onlyIf[$message[]!=;Please mention someone!]`
 })
 bot.Command({
     name: "/youtube",
@@ -300,7 +364,7 @@ $deletecommand[1ms]`
 })
 bot.Command({
     name: "/stonks",
-    code: `$color[$random[111111;999999]]
+    code: `$color[$random[11111;99999]]
 $image[https://vacefron.nl/api/stonks?user=$userAvatar[$mentioned[1;yes]]?size=4096]`
 })
 bot.Command({
@@ -317,7 +381,7 @@ bot.Command({
 $description[]
 $image[https://flamingtext.com/net-fu/proxy_form.cgi?script=runner-logo&text=$replaceText[$message; ;+]&_loc=generate&imageoutput=true]
 $footer[Requested by $username[$authorID]#$discriminator[$authorID]]
-$color[$random[111111;999999]]
+$color[$random[11111;99999]]
 $onlyIf[$message[]!=;Provide Some Text.]`
 })
 bot.Command({
@@ -325,6 +389,7 @@ bot.Command({
     code: `$suppressErrors[**Correct usage: /roll (small number) (big number)**]
 $description[📥**Given Numbers**📥
 $message[1] , $message[2]
+
 📤**Random Number Generated**📤
 $random[$message[1];$message[2]]]
 $title[🎲Random Numbers!🎲]
@@ -453,11 +518,12 @@ $onlyIf[$message[1]!=;Mention who you wanna lick.]`
 })
 bot.Command({
     name: "/ship",
-    code: `
-$color[$random[1;9999]]
+    code: `$description[$username[$message[1]] and $username[$message[2]] are a $random[1;101]% match!]
+$image[https://api.alexflipnote.dev/ship?user=$userAvatar[$message[1]]&user2=$userAvatar[$message[2]]]
 $title[Aww]
-$description[$username[$mentioned[1]] and $username[$mentioned[2]] are a $random[1;101]% match!]
-$onlyIf[$mentioned[1]!=;You have to mention someone and someone else!]`
+$color[$random[11111;99999]]
+$onlyIf[$message[2]!=;]
+$onlyIf[$message[1]!=;You have to use ID of someone and someone else!]`
 })
 bot.Command({
     name: "/watermeme",
@@ -478,10 +544,15 @@ bot.Command({
     code: `$onlyIf[$message[]!=;Please provide some text]
 $title[Result]
 $description[. 　　　。　　　　•　 　ﾟ　　。 　　.
+
 　　　.　　　 　　.　　　　　。　　 。　. 　
+
 .　　 。　　　　　 ඞ 。 . 　　 • 　　　　•
+
 　　ﾟ　　 $message[] $randomText[was not An Impostor;was An Impostor].　 。　.
+
 　　'　　　 $randomText[1;2;0] Impostor remains 　 　　。
+
 　　ﾟ　　　.　　　.　　　　.　 .]
 $color[$random[11111;99999]]`
 })
@@ -550,18 +621,25 @@ bot.Command({
     code: `$botTyping
 $color[$random[11111;99999]]
 $description[__ ** 👤User info👤 ** __
+
 ** 📙Username: **
 $username[$mentioned[1;yes]]
+
 ** 📘UserID: **
 $userID[$username[$mentioned[1;yes]]]
+
 ** ✅User Badges: **
 $getUserBadges[$mentioned[1;yes]]
+
 ** 🔎Tag: **
 $discriminator[$mentioned[1;yes]]
+
 **Boosting Server**
 $isBoosting[$mentioned[1;yes]]
+
 ** 🤖Highest Role: **
 <@&$highestRole[$mentioned[1;yes]]>
+
 ** 🔮Account Creation Date**
 $creationDate[$mentioned[1;yes]]]
 $addTimestamp`
@@ -573,23 +651,41 @@ bot.Command({
 $title[Server Info]
 $description[**SERVER**
 👑 | Server owner: <@$ownerID>
+
 🛠 | Server Name: $serverName[$guildID]
+
 🗺 | Region: $region
+
 🆔 | ID: $guildID
+
 🛡 | Level of protection: $serverVerificationLvl
+
  MEMBER
+
 🗞 | All Members: $membersCount[]
+
 📛 | Online: $membersCount[online]
+
 📟 | Offline: $membersCount[offline]
+
 🎃 | DoNotDisturb: $membersCount[dnd]
+
 👒 | Idle: $membersCount[idle]
+
 🔭 | Humans: $membersCount[human]
+
 🤖 | Bots: $membersCount[bot]
+
  OTHER
+
 🔰 | Total channels: $channelCount
+
 📌 | Category count: $categoryCount
+
 🙋 | Invite to the server: $getServerInvite[$guildID]
+
 📥 | Server boost count: $serverBoostCount
+
 📮 | Total Emoji: $emoteCount]
 $image[$serverIcon]`
 })
@@ -691,20 +787,21 @@ $addTimestamp`
 })
 bot.Command({
     name: "/ban",
-    code: `$onlyIf[$message[1]!=;]
-$title[Banned]
+    code: `$title[Banned]
 $color[$random[11111;99999]]
 $description[
 **Banned By:**
 <@$authorID>
 **Banned:**
 $username[$mentioned[1]]#$discriminator[$mentioned[1]]
+
 Reason:$noMentionMessage[]]
+$onlyIf[$message[1]!=;]
 $onlyPerms[ban;Missing Ban Member Perm]`
 })
 bot.Command({
     name: "/ban",
-    code: `$onlyIf[$message[1]!=; Please mention who to ban!]
+    code: `
 $ban[$mentioned[1]]
 $useChannel[$getServerVar[ModLogs]]
 $title[Banned]
@@ -714,8 +811,11 @@ $description[
 <@$authorID>
 **Banned:**
 $username[$mentioned[1]]
+
 Reason:$noMentionMessage[]]
 $deletecommand[100ms]
+$onlyIf[$getServerVar[ModLogs]!=;Please use /setmodlogs to set logs!]
+$onlyIf[$message[1]!=; Please mention who to ban!]
 $onlyPerms[ban;Missing Ban Member Perm]`
 })
 bot.Command({
@@ -738,6 +838,7 @@ $onlyPerms[ban; **Missing Bans Permissions**]
 $useChannel[$getServerVar[ModLogs]]
 $title[User Unbanned!]
 $description[User Unbanned: $username[$noMentionMessage[1]#$discriminator[$noMentionMessage[1]]]
+
 Moderator: <@$authorID>]
 $deletecommand[1ms]
 $botTyping
@@ -777,20 +878,22 @@ $addTimestamp`
 bot.Command({
     name: "/role",
     aliases: ["/addrole", "/add-role", "/giverole", "/give-role"],
-    code: `$onlyPerms[manageroles; ❌ Your missing the permission **Manage Roles**]
+    code: `$giveRole[$mentioned[1];$roleID[$noMentionMessage[]]]
+$description[Successfully Given $messageSlice[>1] role to <@$mentioned[1]>]
+$onlyIf[$rolePosition[$highestRole[$authorID]]<=$rolePosition[$roleID[$messageSlice[>1]]];You cant give a role higher than yours!]
 $onlyIf[$message[1]!=;❌ Please mention the user your trying to give role to and enter the name of the role your trying to give!]
-$giveRole[$mentioned[1];$roleID[$noMentionMessage[]]]
-$description[Successfully Given $noMentionMessage[] role to <@$mentioned[1]>]
+$onlyPerms[manageroles; ❌ Your missing the permission **Manage Roles**]
 $deletecommand[1ms]`
 })
 bot.Command({
     name: "/takerole",
     aliases: ["/take-role", "/removerole", "/remove-role"],
     code: `$botTyping
-$onlyPerms[manageroles; ❌ Your missing the permission > Manage Roles]
-$onlyIf[$message[1]!=;❌ Please mention the user your trying to take role from and enter the name of the role your trying to take!]
 $takeRole[$mentioned[1];$roleID[$noMentionMessage[]]]
-$description[Successfully Taken $noMentionMessage[] role from <@$mentioned[1]>]
+$description[Successfully Taken $messageSlice[>1] role from <@$mentioned[1]>]
+$onlyIf[$rolePosition[$highestRole[$authorID]]<=$rolePosition[$roleID[$messageSlice[>1]]];You cant take a role higher than yours!]
+$onlyIf[$message[1]!=;❌ Please mention the user your trying to take role from and enter the name of the role your trying to take!]
+$onlyPerms[manageroles; ❌ Your missing the permission > Manage Roles]
 $deletecommand[1ms]`
 })
 bot.Command({
@@ -814,17 +917,20 @@ bot.Command({
     name: "/deletechannel",
     aliases: ["/delete-channel", "/removechannel", "/remove-channel"],
     code: `$botTyping
-$onlyPerms[managechannels;❌ Your lacking the permission > Manage Channels]
-$onlyIf[$message!=;Please mention the channels to delete!]
 $suppressErrors[Please mention the channels to delete!]
 $deleteChannels[$mentionedChannels[1]]
-$title[Successfully Deleted! ✅]`
+$title[Successfully Deleted! ✅]
+$color[$random[11111;99999]]
+$onlyIf[$message[]!=;Please mention the channels to delete!]
+$onlyPerms[managechannels;❌ Your lacking the permission > Manage Channels]`
 })
 bot.Command({
     name: "/kick",
     code: `$botTyping
 $description[Person Kicked: $username[$mentioned[1]]
+
 Moderator: $username[$authorID]
+
 reason: $noMentionMessage[]]
 $deletecommand[1ms]
 $title[Someone has been Kicked!]
@@ -840,7 +946,9 @@ bot.Command({
 $color[$random[11111;99999]]
 $title[Someone has been Kicked!]
 $description[Person Kicked: $username[$mentioned[1]]
+
 Moderator: $username[$authorID]
+
 reason: $noMentionMessage[]]
 $deletecommand[1ms]
 $onlyIf[$message[1]!=;]
@@ -850,8 +958,11 @@ bot.Command({
     name: "/mute",
     code: `
 $title[Someone has been Muted!]
+
 $description[Person Muted: <@$mentioned[1]>
+
 Moderator: $username[$authorID]
+
 reason: $noMentionMessage[]]
 $giveRole[$mentioned[1];$roleID[$getServerVar[mute]]]
 $onlyIf[$getServerVar[mute]!=;Please use /setmutedrole first!]
@@ -864,7 +975,9 @@ bot.Command({
     code: `
 $title[Someone has been Unmuted!]
 $description[Person Unmuted: <@$mentioned[1]>
+
 Moderator: $username[$authorID]
+
 reason: $noMentionMessage[]]
 $takeRole[$mentioned[1];$roleID[$getServerVar[mute]]]
 $onlyIf[$getServerVar[mute]!=;Please use /setmutedrole first!]
@@ -890,22 +1003,31 @@ $description[🍻**Alcohol**🍻
 **Amount:** $getVar[alcohol;$authorID]
 **ID**  alcohol
 **Use:** /use alcohol
+
 🐟**Fishing Pole**🐟
 **Amount:** $getVar[pole;$authorID]
 **ID**  pole
 **Use:** /fish
+
 🍜**Noddles**🍜
 **Amount:** $getVar[noodle;$authorID]
 **ID**  noodle
 **Use:** /use noodle
+
 🍕**Cheesy Pizza**🍕
 **Amount:** $getVar[pizza;$authorID]
 **ID**  pizza
 **Use:** /use pizza
+
 🍫**Chocolate**🍫
 **Amount:** $getVar[chocolate;$authorID]
 **ID**  chocolate
 **Use:** /use chocolate
+
+👑**Rare Crown**👑
+**Amount:** $getVar[crown;$authorID]
+**ID**  crown
+
 🐠**Fish**🐠
 **Amount:** $getVar[fish;$authorID]
 **ID**  fish
@@ -928,18 +1050,26 @@ $title[Welcome to our shop!]
 $description[🍻**Alcohol**
 **Price:** $1k
 **Code:** /buy alcohol
+
 🐟**Fishing Pole**🐟
 **Price:** $500
 **Code:** /buy pole
+
 🍜**Tasty Noodles**🍜
 **Price:** $200
 **Code:** /buy noodle
+
 🍕**Cheesy Pizza**🍕
 **Price:** $120
 **Code:** /buy pizza
+
 🍫**Tasty Chocolate**🍫
 **Price:** $700
-**Code:** /buy chocolate]
+**Code:** /buy chocolate
+
+👑**Rare Crown**👑
+**Price:** $10000
+**Code:** /buy crown]
 $footer[Page 1 of 1]`
 })
 bot.Command({
@@ -955,7 +1085,7 @@ $onlyIf[$message[1]!=;Provide a amount to deposit!]`
 bot.Command({
     name: "/reset",
     code: `👍
-$setUserVar[$message[1];0;$authorID]
+$setUserVar[$noMentionMessage[];0;$mentioned[1;yes]]
 $onlyForUsers[427109850368049162;No]`
 })
 bot.Command({
@@ -970,7 +1100,8 @@ $onlyIf[$message[1]!=;You need to take a price to withdraw!]`
 })
 bot.Command({
     name: "/buy",
-    code: `$setVar[alcohol;$sum[$getVar[alcohol;$authorID];1];$authorID]
+    code: `
+$setVar[alcohol;$sum[$getVar[alcohol;$authorID];1];$authorID]
 $setVar[money;$sub[$getVar[money;$authorID];1000];$authorID]
 $description[You have successfully bought **1** Alcohol! 🍻]
 $color[$random[11111;99999]]
@@ -1012,6 +1143,16 @@ $description[You have successfully bought **1** Chocolate! 🍫]
 $color[$random[11111;99999]]
 $onlyIf[$getVar[money;$authorID]>=700; **🚫 | You need $700 to buy this item!**]
 $onlyIf[$message[1]==chocolate;]`
+})
+bot.Command({
+    name: "/buy",
+    code: `
+$setVar[crown;$sum[$getVar[crown;$authorID];1];$authorID]
+$setVar[money;$sub[$getVar[money;$authorID];10000];$authorID]
+$description[You have successfully bought **1** Rare Crown! 👑]
+$color[$random[11111;99999]]
+$onlyIf[$getVar[money;$authorID]>=10000; **🚫 | You need $10000 to buy this item!**]
+$onlyIf[$message[1]==crown;]`
 })
 bot.Command({
     name: "/pay",
@@ -1062,23 +1203,28 @@ bot.Command({
     code: `$footer[Author: $username[];$userAvatar[$authorID]]
 $description[**Numbers**
 $replaceText[$message[]; ;,]
+
 **Answer**
-$sum[$message[1];$message[2]]]
+$sum[$splitTextJoin[;]]]
 $title[Maths Time!]
 $color[$random[11111;99999]]
-$suppressErrors[Please choose 2 Valid Numbers!]`
+$textSplit[$message[]; ]
+$suppressErrors[Please choose Valid Numbers!]`
 })
 bot.Command({
     name: "/sub",
    aliases: ["/subtract", "/subtraction"],
     code: `$footer[Author: $username[];$userAvatar[$authorID]]
+
 $description[**Numbers**
 $replaceText[$message[]; ;,]
+
 **Answer**
-$sub[$message[1];$message[2]]]
+$sub[$splitTextJoin[;]]]
 $title[Maths Time!]
 $color[$random[11111;99999]]
-$suppressErrors[Please choose 2 Valid Numbers!]`
+$textSplit[$message[]; ]
+$suppressErrors[Please choose Valid Numbers!]`
 })
 bot.Command({
     name: "/multi",
@@ -1086,11 +1232,13 @@ bot.Command({
     code: `$footer[Author: $username[];$userAvatar[$authorID]]
 $description[**Numbers**
 $replaceText[$message[]; ;,]
+
 **Answer**
-$multi[$message[1];$message[2]]]
+$multi[$splitTextJoin[;]]]
 $title[Maths Time!]
 $color[$random[11111;99999]]
-$suppressErrors[Please choose 2 Valid Numbers!]`
+$textSplit[$message[]; ]
+$suppressErrors[Please choose Valid Numbers!]`
 })
 bot.Command({
     name: "/divide",
@@ -1098,11 +1246,13 @@ bot.Command({
     code: `$footer[Author: $username[];$userAvatar[$authorID]]
 $description[**Numbers**
 $replaceText[$message[]; ;,]
+
 **Answer**
-$divide[$message[1];$message[2]]]
+$divide[$splitTextJoin[;]]]
 $title[Maths Time!]
 $color[$random[11111;99999]]
-$suppressErrors[Please choose 2 Valid Numbers!]`
+$textSplit[$message[]; ]
+$suppressErrors[Please choose Valid Numbers!]`
 })
 bot.Command({
     name: "/tolowercase",
@@ -1159,8 +1309,10 @@ $color[$random[11111;99999]]
 $description[
 **Banned By:**
 <@$authorID>
+
 **Banned:**
 $username[$message[1]]
+
 Reason: $messageSlice[>1]]
 $deletecommand[100ms]
 $onlyPerms[ban;Missing Ban Member Perm]`
@@ -1170,7 +1322,7 @@ bot.Command({
     aliases: ["/table-flip"],
     code: `$image[https://vacefron.nl/api/tableflip?user=$userAvatar[$authorID]?size=2048]
 $description[<@$authorID> flipped the table!]
-$color[$random[111111;999999]]`
+$color[$random[11111;99999]]`
 })
 bot.Command({
     name: "/creatememe",
@@ -1199,20 +1351,23 @@ $suppressErrors[Please provide the ID of the person to rob!]`
 bot.SpaceCommand({
     name: "levelling",
     code: `$setUserVar[talk;$sum[$getUserVar[talk];$random[5;25]]]
-$cooldown[30s;]`
+$cooldown[30s;]
+$onlyIf[$getServerVar[levelling]==on;]`
 })
 bot.SpaceCommand({
     name: "level",
     code: `$setUserVar[level;$sum[$getUserVar[level];1]]
 Congratulations <@$authorID>, you have leveled up! You are now level $sum[$getUserVar[level];1]!
 $setUserVar[req;$sum[$getUserVar[req];$random[600;2000]]]
-$onlyIf[$getUserVar[talk]>$getUserVar[req];]`
+$onlyIf[$getUserVar[talk]>$getUserVar[req];]
+$onlyIf[$getServerVar[levelling]==on;]`
 })
 bot.Command({
     name: "/rank",
     aliases: ["/level"],
     code: `$description[]
-$image[https://vacefron.nl/api/rankcard?username=$replaceText[$username[$mentioned[1;yes]]; ;_]&avatar=$userAvatar[$mentioned[1;yes]]&size=1023&level=$getUserVar[level;$mentioned[1;yes]]&rank=&currentxp=$getUserVar[talk;$mentioned[1;yes]]&nextlevelxp=$getUserVar[req;$mentioned[1;yes]]&previouslevelxp=$sub[$getUserVar[talk;$mentioned[1;yes]];120]]`
+$image[https://vacefron.nl/api/rankcard?username=$replaceText[$username[$mentioned[1;yes]]; ;_]&avatar=$userAvatar[$mentioned[1;yes]]&size=1023&level=$getUserVar[level;$mentioned[1;yes]]&rank=&currentxp=$getUserVar[talk;$mentioned[1;yes]]&nextlevelxp=$getUserVar[req;$mentioned[1;yes]]&previouslevelxp=$sub[$getUserVar[talk;$mentioned[1;yes]];120]]
+$onlyIf[$getServerVar[levelling]==on;Levelling Disabled!]`
 })
 bot.Command({
     name: "/lb",
@@ -1221,6 +1376,7 @@ bot.Command({
 $description[$userLeaderboard[level;asc]]
 $title[Rank Leaderboard]
 $color[$random[11111;99999]]
+$onlyIf[$getServerVar[levelling]==on;Levelling Disabled!]
 $onlyIf[$message[1]==rank;]`
 })
 bot.Command({
@@ -1244,12 +1400,18 @@ bot.onMessageDelete()
 bot.Command({
     name: "/snipe",
     code: `$footer[#$channelName[$channelID[]]]
-$addTimestamp
 $description[$getChannelVar[snipe;$channelID[]]]
 $title[$username[$getChannelVar[snipe1;$channelID[]]]]
 $thumbnail[$userAvatar[$getChannelVar[snipe1;$channelID[]]]]
 $color[$random[11111;99999]]
 $onlyIf[$getChannelVar[snipe]!=;Theres nothing to snipe!]`
+})
+bot.SpaceCommand({
+ name: "dejvypepic",
+ code: `$replaceText[$replaceText[$checkCondition[$getUserVar[nm;$mentioned[1]]==1];true;
+$username[$mentioned[1]] is AFK!
+Message: $getUserVar[msg]];false;]
+$onlyIf[$mentioned[1]!=;]`
 })
 bot.Command({
     name: "/afk",
@@ -1257,6 +1419,7 @@ bot.Command({
 $setUserVar[msg;$messageSlice[>1]]
 $title[Your AFK Has Been Successfully Set!]
 $color[$random[11111;99999]]
+$onlyIf[$checkContains[$message[];https://;http://;<@&]==false;You cant have links or role pings in ur role!]
 $onlyIf[$messageSlice[>1]!=;Please type afk message]
 $onlyIf[$getUserVar[nm]==0;You already enabled afk, to disable it type /afk off]
 $onlyIf[$message[1]==on;]`
@@ -1272,7 +1435,7 @@ $onlyIf[$message[1]==off;]`
 })
 bot.JoinedCommand({
 name: "$getServerVar[welcome]",
-code: `<@$authorID> welcome to $serverName[$guildID]!
+code: `<@$authorID> welcome to $serverName[]!
 I hope you enjoy your stay!
 `
 })
@@ -1345,7 +1508,7 @@ $username[$mentioned[1;yes]]
 $random[30;400] IQ! ]
 $title[$username[$mentioned[1;yes]] Smrt]
 $image[https://api.no-api-key.com/api/v2/smrt?image=$userAvatar[$mentioned[1;yes]]]
-$color[$random[100000;999999]]
+$color[$random[100000;99999]]
 $addTimestamp`
 })
 bot.Command({
@@ -1353,14 +1516,18 @@ bot.Command({
     code: `$thumbnail[$userAvatar[$mentioned[1;yes]]]
 $description[**🔪Name🔪**
 $username[$mentioned[1;yes]]
+
 🎉🎊**Birthday**🎉🎊
 $getVar[birthday;$mentioned[1;yes]]
+
 🐱**Pets Name**🐱
 $getVar[petname;$mentioned[1;yes]]
+
 👒**Favourite Color**👒
 $getVar[favcolor;$mentioned[1;yes]]
+
 **Server Level**
-$getUserVar[level;$mentioned[1;yes]]]`
+$image[https://vacefron.nl/api/rankcard?username=$replaceText[$username[$mentioned[1;yes]]; ;_]&avatar=$userAvatar[$mentioned[1;yes]]&size=1023&level=$getUserVar[level;$mentioned[1;yes]]&rank=&currentxp=$getUserVar[talk;$mentioned[1;yes]]&nextlevelxp=$getUserVar[req;$mentioned[1;yes]]&previouslevelxp=$sub[$getUserVar[talk;$mentioned[1;yes]];120]]]`
 })
 bot.Command({
     name: "/setbirth",
@@ -1495,7 +1662,7 @@ $onlyIf[$message[1]==fact;]`
 })
 bot.Command({
     name: "/lyrics",
-    code: `$description[$api[https://no-api-key.com/api/v1/ksof/lyrics?song=$replaceText[$message[]; ;%20];lyrics]]]
+    code: `$description[$api[https://some-random-api.ml/lyrics?title=$replaceText[$message[]; ;%20];lyrics]]
 $title[Lyrics of $message[]]
 $color[$random[11111;99999]]
 $onlyIf[$message[]!=;Please provide the name of the song!]`
@@ -1539,6 +1706,7 @@ bot.Command({
     code: `$footer[Requested by $username[];$userAvatar[$authorID]]
 $description[**Input Text**
 $messageSlice[>1]
+
 **Output Binary**
 $api[https://some-random-api.ml/binary?text=$replaceText[$messageSlice[>1]; ;+];binary]]
 $title[Binary Conversion]
@@ -1551,6 +1719,7 @@ bot.Command({
     code: `$footer[Requested by $username[];$userAvatar[$authorID]]
 $description[**Input Binary**
 $messageSlice[>1]
+
 **Output Text**
 $api[https://some-random-api.ml/binary?decode=$replaceText[$messageSlice[>1]; ;+];text]]
 $title[Binary Conversion]
@@ -1564,6 +1733,7 @@ bot.Command({
     code: `$footer[Requested by $username[];$userAvatar[$authorID]]
 $description[**Input Text**
 $messageSlice[>1]
+
 **Output Base64**
 $api[https://some-random-api.ml/base64?encode=$replaceText[$messageSlice[>1]; ;+];base64]]
 $title[Base64 Conversion]
@@ -1576,6 +1746,7 @@ bot.Command({
     code: `$footer[Requested by $username[];$userAvatar[$authorID]]
 $description[**Input Base64**
 $messageSlice[>1]
+
 **Output Text**
 $api[https://some-random-api.ml/base64?decode=$replaceText[$messageSlice[>1]; ;+];text]]
 $title[Base64 Conversion]
@@ -1589,6 +1760,7 @@ bot.Command({
 $description[Avaliable Binary Options
 __/binary encode__
 Encodes the provided text into binary codes.
+
 __/binary decode__
 Decodes the provided binary code into simple text.]
 $title[Binary Help]
@@ -1601,6 +1773,7 @@ bot.Command({
 $description[Avaliable Base64 Options
 __/base64 encode__
 Encodes the provided text into Base64 codes.
+
 __/base64 decode__
 Decodes the provided Base64 code into simple text.]
 $title[Base64 Help]
@@ -1632,10 +1805,7 @@ $onlyIf[$message[1]==off;]`
 bot.SpaceCommand({
     name: "antilinks",
     code: `$addTimestamp
-$footer[Sent by $username[];$userAvatar[$authorID]]
-$description[<@$authorID> you cant send links! AntiLinks is currently online! Only admins can bypass!]
-$title[AntiLinks Security!]
-$color[$random[11111;99999]]
+<@$authorID> you cant send links! AntiLinks is currently online! Only admins can bypass!
 $deletecommand[1ms]
 $onlyIfMessageContains[https://;http://;discord.gg;www.;]
 $onlyIf[$getServerVar[antilink]==on;]
@@ -1657,6 +1827,7 @@ bot.Command({
   code: `$footer[Requested by $username[];$userAvatar[$authorID]]
   $description[**Input RGB Color Code**
   $message[]
+
 **Output Hex Code**
 $api[https://some-random-api.ml/canvas/hex?rgb=$replaceText[$message[]; ;,];hex]]
   $title[Color Conversion!]
@@ -1670,6 +1841,7 @@ bot.Command({
   code: `$footer[Requested by $username[];$userAvatar[$authorID]]
   $description[**Input Hex Color Code**
   $message[1]
+
 **Output RGB Code**
 __R=__ $api[https://some-random-api.ml/canvas/rgb?hex=$replaceText[$message[1]; ;,];r]
 __G=__ $api[https://some-random-api.ml/canvas/rgb?hex=$replaceText[$message[1]; ;,];g]
@@ -1684,6 +1856,7 @@ bot.Command({
   code: `$footer[Requested by $username[];$userAvatar[$authorID]]
   $description[**Number of words**
 $argsLength
+
 **Number of characters**
 $charCount]
 $title[Text Counter!]
@@ -1743,43 +1916,177 @@ $onlyIf[$message[]!=;]
 $onlyPerms[manageroles;]`
 })
 bot.Command({
-  name: "/flip",
-  code: `$footer[Requested by $username[]]
-$description[__**Coin**__
-$api[https://no-api-key.com/api/v1/coin-flip;coin]]
-$image[$api[https://no-api-key.com/api/v1/coin-flip;image]]
-$title[Coin Flip!]
+    name: "/vote",
+    code: `$footer[You can vote each day!]
+$description[Vote for cosmo to help it grow more and get better rankings!
+Click {hyper:here:https://discordbotlist.com/bots/cosmo/upvote}]
+$title[Vote For Cosmo!]
 $color[$random[11111;99999]]`
 })
 bot.Command({
-name: "/car",
+name: "/quotes",
 code: `$footer[Requested by $username[]]
-$image[$api[https://no-api-key.com/api/v1/car;image]]
-$title[Car!]
+$description[**__Quote__**
+$api[https://api.quotable.io/random;content]
+
+**__Author__**
+$api[https://api.quotable.io/random;author]]
+$thumbnail[$userAvatar[$authorID]]
 $color[$random[11111;99999]]`
 })
 bot.Command({
-  name: "/generate",
-  aliases: ["/generator"],
-  code: `$addTimestamp
-$description[All Generator Commands!
-__/generate password (length)__ == Generates a random password for you!
-
-__/generate mc10__ == Generates a random Minecraft Windows 10 Account for you!]
-$title[All Generator Commands!]
-$color[$random[11111;99999]]
-$onlyIf[$message[]==;]`
+    name: "/salty",
+    code: `$footer[Requested By $username[]]
+$image[https://api.alexflipnote.dev/salty?image=$userAvatar[$mentioned[1;yes]]]
+$title[I smell saltiness]
+$color[$random[11111;99999]]`
 })
 bot.Command({
-  name: "/generate",
-  code: `$footer[Requested by $username[]]
-$description[__**Password**__
-$api[https://no-api-key.com/api/v1/password?length=$message[2];password]
-
-These passwords are never stored and generated randomly.]
-$title[Random Password!]
+    name: "/setbadwords",
+    code: `$setServerVar[badword;$splitTextJoin[;]]
+$footer[Requested By $username[]]
+$description[Updated Bad Words list to-
+$replaceText[$message[]; ;,]]
+$title[Bad Words Settings]
 $color[$random[11111;99999]]
-$onlyIf[$isNumber[$message[2]]==true;Please provid a valid number]
-$onlyIf[$message[2]!=;Please provide the length of password!]
-$onlyIf[$message[1]==password;]`
+$textSplit[$message[]; ]
+$onlyIf[$message[]!=;Please provide the word you wish to block!]
+$onlyPerms[managemessages;Your lacking the permission >> Manage Messages]`
+})
+bot.SpaceCommand({
+    name: "antiswearing",
+    code: `$deletecommand[1ms]
+<@$authorID> That word is not allowed here / It is a blacklisted word! Please refrain from using it!
+$onlyIfMessageContains[$getServerVar[badword];]
+$onlyIf[$hasPerm[$authorID;admin]==false;]
+$onlyIf[$getServerVar[badword]!=;]
+$onlyIf[$getServerVar[antiswearing]==on;]`
+})
+bot.Command({
+     name: "/antiswearing",
+    code: `$setServerVar[antiswearing;on]
+$footer[Command by $username[]]
+$description[Successfully enabled __**Anti Swearing**__!]
+$title[Anti Swearing Settings]
+$color[$random[11111;99999]]
+$onlyIf[$message[1]==on;]
+$onlyAdmin[Admin Only!]`
+})
+bot.Command({
+     name: "/antiswearing",
+    code: `$setServerVar[antiswearing;off]
+$footer[Command by $username[]]
+$description[Successfully disabled  __**Anti Swearing**__!]
+$title[Anti Swearing Settings]
+$color[$random[11111;99999]]
+$onlyIf[$message[1]==off;]
+$onlyAdmin[Admin Only!]`
+})
+bot.Command({
+  name: "/fml",
+  code: `$footer[Requested by $username[]]
+$description[$api[https://api.alexflipnote.dev/fml;text]]
+$title[FML]
+$color[$random[11111;99999]]`
+})
+bot.Command({
+  name: "/scroll",
+  code: `$footer[Requested by $username[];$userAvatar[$authorID]]
+$image[https://api.alexflipnote.dev/scroll?text=$replaceText[$message[]; ;%20]]
+$color[$random[11111;99999]]
+$onlyIf[$message[]!=;Provide some text]`
+})
+bot.Command({
+  name: "/floor",
+  code: `$footer[Requested by $username[];$userAvatar[$authorID]]
+$image[https://api.alexflipnote.dev/floor?image=$userAvatar[$mentioned[1;yes]]&text=$replaceText[$noMentionMessage[]; ;%20]]
+$color[$random[11111;99999]]
+$onlyIf[$message[]!=;Provide some text!]`
+})
+bot.Command({
+  name: "/nitro",
+  code: `$deletecommand[1ms]
+$image[https://media.discordapp.net/attachments/705681477169315863/769867163452047400/8a1aaf15578d1baaa469cc78a283c6e0c6e85315.jpg]
+$color[$random[11111;99999]]`
+})
+bot.Command({
+  name: "/ipfind",
+  aliases: ["/ipfinder", "/ip-find"],
+  code: `$addTimestamp
+$description[__**IP**__
+$api[https://freegeoip.app/json/$message[1];ip]
+
+__**Country Name**__
+$api[https://freegeoip.app/json/$message[1];country_name]
+
+__**Region Name**__
+$api[https://freegeoip.app/json/$message[1];region_name]
+
+__**City**__
+$api[https://freegeoip.app/json/$message[1];city]
+
+__**Zip Code**__
+$api[https://freegeoip.app/json/$message[1];zip_code]
+
+__**Time Zone**__
+$api[https://freegeoip.app/json/$message[1];time_zone]
+
+__**Latitude**__
+$api[https://freegeoip.app/json/$message[1];latitude]
+
+__**Longitude**__
+$api[https://freegeoip.app/json/$message[1];longitude]]
+$color[$random[11111;99999]]
+$onlyIf[$message[1]!=;Please provide a ip address of whose information you want to get!]`
+})
+bot.Command({
+  name: "/levelling",
+  code: `$setServerVar[levelling;$message[1]]
+$footer[Command by $username[$authorID];$userAvatar[$authorID]]
+$description[Successfully set the __Levelling System__ to $message[1]]
+$title[Levelling System Settings]
+$color[$random[11111;99999]]
+$onlyIfMessageContains[on;off;Please use on / off for the settings!]
+$onlyAdmin[Administrator Only]`
+})
+bot.Command({
+  name: "/ticket",
+  code: `$setUserVar[ticketspam;1;$authorID]
+$modifyChannelPerms[$channelID[ticket-$toLowercase[$username[$authorID]]];+viewchannel;+sendmessages;$authorID]
+$modifyChannelPerms[$channelID[ticket-$toLowercase[$username[$authorID]]];-viewchannel;-sendmessages;$guildID]
+$footer[Requested by $username[$authorID];$userAvatar[$authorID]]
+$description[Successfully opened a new ticket! <#$channelID[ticket-$toLowercase[$username[$authorID]]]>]
+$title[Ticket Creator]
+$color[$random[11111;99999]]
+$createChannel[ticket-$username[$authorID];text;$findCategory[Tickets]]
+$onlyIf[$getUserVar[ticketspam]==0;You already have a ticket opened! You cant have more than 1 ticket at once!]
+$onlyIf[$findCategory[Tickets]!=;You havent configured the ticket system yet!
+Please use /ticket setup if your are Administrator]
+$onlyIf[$message[1]==open;]`
+})
+bot.Command({
+  name: "/ticket",
+  code: `$createChannel[Tickets;category]
+$addTimestamp
+$description[Successfully configured Ticket System!]
+$title[Ticket Settings]
+$color[$random[11111;99999]]
+$onlyPerms[managechannels;You need the permission **Manage Channels** to execute this command!]
+$onlyIf[$message[1]==setup;]`
+})
+bot.Command({
+  name: "/ticket",
+  code: `$deleteChannels[$channelID[ticket-$toLowercase[$username[]]]]
+$setUserVar[ticketspam;0;$authorID]
+$onlyIf[$channelID[]==$channelID[ticket-$toLowercase[$username[$authorID]]];This is not a Ticket!
+Make sure the person who opened the ticket is using this! If your a admin use /deletechannel]
+$onlyIf[$findChannel[ticket-$toLowercase[$username[$authorID]]]!=undefined;This aint a ticket channel.]
+$onlyIf[$message[1]==close;]`
+})
+bot.Command({
+  name: "/car",
+  code: `$addTimestamp
+$image[$api[https://no-api-key.com/api/v1/car;image]]
+$title[Cars!]
+$color[$random[11111;99999]]`
 })
