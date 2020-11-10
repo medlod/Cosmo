@@ -3,7 +3,7 @@ const Dlang = require('discordbot-script')
 const discordScript = require("discordbot-script")
 
 const bot = new discordScript({
-  token: "YOUR TOKEN",
+  token: "TOKEN",
   prefix: [""]
 })
 
@@ -19,7 +19,7 @@ $description[🔰**Basic Commands**🔰
 > covid | rank | leaderboard | github | ‎ticket open | ticket close | remind | profile | vote | hex | rgb | count | poll | ‎suggest | binary | base64 | userinfo | checkwarn | ping | infoinvite | serverinfo | ‎botinfo | ‎afk on | afk off | support
 
 🔪**Fun Commands**🔪
-> say | math | hug | neko | ipfind | lick | nitro | floor | car | kiss | pat | fml | scroll | cat | dog | fox | koala | redpanda | panda | quotes | bird | cat fact | dog fact | fox fact | koala fact | panda fact | bird fact | topic | stonks | salty | tickle | poke | youtube | trump | snipe | makememe| table-flip | clyde | pokedex | cuddle | weather | ship | facts | amongus | trash | watermeme | magik | eject | viewcolor| cmm | lyrics| meme | preview | roll | wink | avatar‎ | 8ball‎ | kill | rps‎ | slap‎ | achievement | skin | exam | lowercase | ttt help | uppercase |
+> say | math | hug | neko | ipfind | lick | invert | nitro | gay | wasted | triggered | floor | car | kiss | pat | fml | scroll | cat | dog | fox | koala | redpanda | panda | quotes | bird | cat fact | dog fact | fox fact | koala fact | panda fact | bird fact | topic | stonks | salty | tickle | poke | youtube | trump | snipe | makememe| table-flip | clyde | pokedex | cuddle | weather | ship | facts | amongus | trash | watermeme | magik | eject | viewcolor| cmm | lyrics| meme | preview | roll | wink | avatar‎ | 8ball‎ | kill | rps‎ | slap‎ | achievement | skin | exam | lowercase | ttt help | uppercase |
 
 💳**Economy Commands**💳
 > work | ‎bal | crime | fish | gift | beg | shop | inv | dep or deposit | with or withdraw‎ | daily | lb or leaderboard cash | lb or leaderboard bank |
@@ -28,7 +28,7 @@ $description[🔰**Basic Commands**🔰
 > purge‎ | announce | nick | ban | massrole | mute | unmute‎ | warn | antilinks | antiswearing | setbadwords | lock | setslowmode | checkwarn‎ | setwarns | banid‎ | unbanid‎ | kick‎ | role‎ | takerole‎ | createchannel | deletechannel |
 
 📛**Bot Config Commands**📛
-> setsuggest‎ | setmodlogs | setmutedrole | setwelcome | levelling | ticket setup
+> setsuggest‎ | setmodlogs | setmutedrole | setwelcome | levelling | ticket setup | setmessage
 
 **Join our Support Server!**
 {hyper:Click Here:https://cosmobot.ml/support}]
@@ -82,7 +82,7 @@ bot.Variables({
   antiswearing: "off",
   alcohol1: "",
   giveaway: "",
-  levelling: "on",
+  levelling: "on"
 })
 bot.Status({
         0: {
@@ -221,6 +221,7 @@ $onlyIf[$message[1]==bank;]`
 bot.Command({
     name: "/announce",
     code: `$botTyping
+$addReactions[✅]
 $color[$random[11111;99999]]
 $title[Announcement! 📡]
 $description[$messageSlice[>1]]
@@ -229,15 +230,6 @@ $footer[Sent by $username[$authorID]]
 $useChannel[$mentionedChannels[1]]
 $onlyIf[$message[1]!=;Please mention a channel where to announce.]
 $onlyAdmin[Admins Only!]`
-})
-bot.Command({
-  name: "/announce",
-  code: `$addTimestamp
-$description[Successfully sent your announcement to <#$mentionedChannels[1]>]
-$title[Announcer!]
-$color[$random[11111;99999]]
-$onlyIf[$message[1]!=;]
-$onlyAdmin[]`
 })
 bot.Command({
     name: "/status",
@@ -791,11 +783,13 @@ bot.Command({
 $color[$random[11111;99999]]
 $description[
 **Banned By:**
-<@$authorID>
-**Banned:**
-$username[$mentioned[1]]#$discriminator[$mentioned[1]]
+**<@$authorID>**
 
-Reason:$noMentionMessage[]]
+**Banned:**
+**$username[$mentioned[1]]#$discriminator[$mentioned[1]]**
+
+Reason: **$noMentionMessage[]**]
+$onlyIf[$rolePosition[$highestRole[$authorID]]<=$rolePosition[$highestRole[$mentioned[1]]];]
 $onlyIf[$message[1]!=;]
 $onlyPerms[ban;Missing Ban Member Perm]`
 })
@@ -808,13 +802,15 @@ $title[Banned]
 $color[$random[11111;99999]]
 $description[
 **Banned By:**
-<@$authorID>
-**Banned:**
-$username[$mentioned[1]]
+**<@$authorID>**
 
-Reason:$noMentionMessage[]]
+**Banned:**
+**$username[$mentioned[1]]**
+
+Reason: **$noMentionMessage[]**]
 $deletecommand[100ms]
 $onlyIf[$getServerVar[ModLogs]!=;Please use /setmodlogs to set logs!]
+$onlyIf[$rolePosition[$highestRole[$authorID]]<=$rolePosition[$highestRole[$mentioned[1]]];You cant ban someone higher than you!]
 $onlyIf[$message[1]!=; Please mention who to ban!]
 $onlyPerms[ban;Missing Ban Member Perm]`
 })
@@ -927,16 +923,17 @@ $onlyPerms[managechannels;❌ Your lacking the permission > Manage Channels]`
 bot.Command({
     name: "/kick",
     code: `$botTyping
-$description[Person Kicked: $username[$mentioned[1]]
+$description[Person Kicked: **$username[$mentioned[1]]**
 
-Moderator: $username[$authorID]
+Moderator: **$username[$authorID]**
 
-reason: $noMentionMessage[]]
+Reason: **$noMentionMessage[]**]
 $deletecommand[1ms]
 $title[Someone has been Kicked!]
 $color[$random[11111;99999]]
 $useChannel[$getServerVar[ModLogs]]
 $kick[$mentioned[1]]
+$onlyIf[$rolePosition[$highestRole[$authorID]]<=$rolePosition[$highestRole[$mentioned[1]]];You cant kick someone higher than you!]
 $onlyIf[$message[1]!=;Mention The User You Wanna Kick And Provide A Reason.]
 $onlyPerms[kick; ❌ You lack the following perms > Kick Members]`
 })
@@ -945,12 +942,13 @@ bot.Command({
     code: `$botTyping
 $color[$random[11111;99999]]
 $title[Someone has been Kicked!]
-$description[Person Kicked: $username[$mentioned[1]]
+$description[Person Kicked: **$username[$mentioned[1]]**
 
-Moderator: $username[$authorID]
+Moderator: **$username[$authorID]**
 
-reason: $noMentionMessage[]]
+Reason: **$noMentionMessage[]**]
 $deletecommand[1ms]
+$onlyIf[$rolePosition[$highestRole[$authorID]]<=$rolePosition[$highestRole[$mentioned[1]]];]
 $onlyIf[$message[1]!=;]
 $onlyPerms[kick;]`
 })
@@ -1278,9 +1276,9 @@ $botTyping`
 })
 bot.Command({
     name: "<@557212167191920680>",
-    code: `$footer[Command by $username[]#$discriminator[$authorID];$userAvatar[$authorID]]
+    code: `$addTimestamp
 $description[My prefix is /
-Do /help to see what i can! ;)]
+My help page is /help]
 $title[Ping Pong!]
 $color[$random[11111;99999]]
 $addTimestamp
@@ -1308,13 +1306,14 @@ $title[Banned]
 $color[$random[11111;99999]]
 $description[
 **Banned By:**
-<@$authorID>
+**<@$authorID>**
 
 **Banned:**
-$username[$message[1]]
+**$username[$message[1]]**
 
-Reason: $messageSlice[>1]]
+Reason: **$messageSlice[>1]**]
 $deletecommand[100ms]
+$onlyIf[$rolePosition[$highestRole[$authorID]]<=$rolePosition[$highestRole[$mentioned[1]]];You cant ban someone higher than you!]
 $onlyPerms[ban;Missing Ban Member Perm]`
 })
 bot.Command({
@@ -1435,15 +1434,13 @@ $onlyIf[$message[1]==off;]`
 })
 bot.JoinedCommand({
 name: "$getServerVar[welcome]",
-code: `<@$authorID> welcome to $serverName[]!
-I hope you enjoy your stay!
-`
+code: `Welcome <@$authorID> to $serverName[$guildID]!
+Hope you enjoy your stay here!`
 })
 bot.onJoined()
 bot.LeaveCommand({
 name: "$getServerVar[welcome]",
-code: `$username[$authorID] has left the server :(
-`
+code: `$username[$authorID] has left the server!`
 })
 bot.onLeave()
 bot.Command({
@@ -1693,14 +1690,6 @@ $onlyIf[$isNumber[$message[1]]==true;Please choose a valid number! Example: /set
 $onlyIf[$message[1]!=;Provide the amount of seconds in number!]
 $onlyPerms[managechannels;Missing permissions >> Manage Channels]`
 })
-bot.MessageDeleteCommand({
-name: "$getServerVar[ModLogs]",
-code: `
-$username[$authorID]#$discriminator[$authorID] has deleted a message in <#$channelID[]>!
-content: $message[]
-`
-})
-bot.onMessageDelete()
 bot.Command({
     name: "/binary",
     code: `$footer[Requested by $username[];$userAvatar[$authorID]]
@@ -2088,5 +2077,33 @@ bot.Command({
   code: `$addTimestamp
 $image[$api[https://no-api-key.com/api/v1/car;image]]
 $title[Cars!]
+$color[$random[11111;99999]]`
+})
+bot.Command({
+  name: "/triggered",
+  code: `$footer[Command Author: $username[];$userAvatar[$authorID]]
+$image[https://some-random-api.ml/canvas/triggered?avatar=$replaceText[$userAvatar[$mentioned[1;yes]];webp;png]]
+$title[TRIGGERED]
+$color[$random[11111;99999]]`
+})
+bot.Command({
+  name: "/wasted",
+  code: `$footer[Command Author: $username[];$userAvatar[$authorID]]
+$image[https://some-random-api.ml/canvas/wasted?avatar=$replaceText[$userAvatar[$mentioned[1;yes]];webp;png]]
+$title[WASTED]
+$color[$random[11111;99999]]`
+})
+bot.Command({
+  name: "/gay",
+  code: `$footer[Command Author: $username[];$userAvatar[$authorID]]
+$image[https://some-random-api.ml/canvas/gay?avatar=$replaceText[$userAvatar[$mentioned[1;yes]];webp;png]]
+$title[$username[$mentioned[1;yes]] Gay]
+$color[$random[11111;99999]]`
+})
+bot.Command({
+  name: "/invert",
+  code: `$footer[Command Author: $username[];$userAvatar[$authorID]]
+$image[https://some-random-api.ml/canvas/invert?avatar=$replaceText[$userAvatar[$mentioned[1;yes]];webp;png]]
+$title[Ahh...]
 $color[$random[11111;99999]]`
 })
