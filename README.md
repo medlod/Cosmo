@@ -1,5 +1,5 @@
 # Cosmo
-**A normal moderation , fun and basic commands for you server!  Easy to start and setup on your own without any coding experience!**
+**A normal moderation , fun and basic , music commands for you server!  Easy to start and setup on your own without any coding experience!**
 
 # Features
 ![hm](https://media.discordapp.net/attachments/752428043951276102/756894135805280266/ezgif-7-448f9070f3e2.png)
@@ -9,6 +9,7 @@
 <br>⦿ Economy commands cuz why not
 <br>⦿ Constant updates and bug fixes
 <br>⦿ Levelling System
+<br>⦿ Music Commands!
 
 # The Code
 <a href="https://github.com/RileCraft/Cosmo/">
@@ -28,6 +29,6 @@ After you have gotten yourself a host you need to Install the following to make 
 <br> NPM Package <a href="https://www.npmjs.com/package/discordbot-script"> discordbot-script </a>
 
 You can install the npm package by
-<br> <b> npm install discordbot-script </b>
+<br> <b> npm install (names) </b>
 
 After this just add your bot token in the main file and start the hosting as using the index.js file as your main and your good to go!
