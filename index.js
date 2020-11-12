@@ -16,23 +16,87 @@ bot.Command({
 $color[$random[1;99999]]
 $title[Help Commands]
 $description[🔰**Basic Commands**🔰
-> covid | rank | leaderboard | github | ‎ticket open | ticket close | remind | profile | vote | hex | rgb | count | poll | ‎suggest | binary | base64 | userinfo | checkwarn | ping | infoinvite | serverinfo | ‎botinfo | ‎afk on | afk off | support
+__**/basic**__
 
 🔪**Fun Commands**🔪
-> say | math | hug | neko | ipfind | lick | invert | nitro | gay | wasted | triggered | floor | car | kiss | pat | fml | scroll | cat | dog | fox | koala | redpanda | panda | quotes | bird | cat fact | dog fact | fox fact | koala fact | panda fact | bird fact | topic | stonks | salty | tickle | poke | youtube | trump | snipe | makememe| table-flip | clyde | pokedex | cuddle | weather | ship | facts | amongus | trash | watermeme | magik | eject | viewcolor| cmm | lyrics| meme | preview | roll | wink | avatar‎ | 8ball‎ | kill | rps‎ | slap‎ | achievement | skin | exam | lowercase | ttt help | uppercase |
+**__/fun__**
 
 💳**Economy Commands**💳
-> work | ‎bal | crime | fish | gift | beg | shop | inv | dep or deposit | with or withdraw‎ | daily | lb or leaderboard cash | lb or leaderboard bank |
+__**/economy**__
 
 🎃**Staff Commands**🎃
-> purge‎ | announce | nick | ban | massrole | mute | unmute‎ | warn | antilinks | antiswearing | setbadwords | lock | setslowmode | checkwarn‎ | setwarns | banid‎ | unbanid‎ | kick‎ | role‎ | takerole‎ | createchannel | deletechannel |
+**__/staff__**
 
 📛**Bot Config Commands**📛
-> setsuggest‎ | setmodlogs | setmutedrole | setwelcome | levelling | ticket setup | setmessage
+**__/config__**
+
+🎵__**Music Commands**__🎵
+__**/music**__
 
 **Join our Support Server!**
-{hyper:Click Here:https://cosmobot.ml/support}]
+{hyper:Click Here:https://discord.gg/wU9wXdJDsVt}]
   `
+})
+
+bot.Command({
+name: "/basic",
+code:`$addTimestamp
+$description[〣covid〣 〣rank〣 〣leaderboard〣  〣github〣 〣‎ticket open〣 〣ticket close〣 〣remind〣 〣profile〣 〣vote〣 〣hex〣 〣rgb〣 〣count〣 〣poll〣 〣suggest〣 〣binary〣 〣base64〣 〣userinfo〣 〣checkwarn〣 〣ping〣 〣infoinvite〣 〣serverinfo〣 〣botinfo〣 〣afk on〣 〣afk off〣 〣support〣
+
+**Join our Support Server!**
+{hyper:Click Here:https://discord.gg/wU9wXdJDsV}]
+$title[Basic Commands]
+$color[$random[11111;99999]]`
+})
+bot.Command({
+name: "/fun",
+code: `$addTimestamp
+$description[〣say〣 〣math〣 〣hug〣 〣neko〣 〣ipfind〣 〣lick〣 〣invert〣 〣nitro〣 〣gay〣 〣wasted〣 〣triggered〣 〣floor〣 〣car〣 〣kiss〣 〣pat〣 〣fml〣 〣scroll〣 〣cat〣 〣dog〣 〣fox〣 〣koala〣 〣redpanda〣 〣panda〣 〣quotes〣 〣bird〣 〣cat fact〣 〣dog fact〣 〣fox fact〣 〣koala fact〣 〣panda fact〣 〣bird fact〣 〣topic〣 〣stonks〣 〣salty〣 〣tickle〣 〣poke〣 〣youtube〣 〣trump〣 〣snipe〣 〣makememe〣 〣table-flip〣 〣clyde〣 〣pokedex〣 〣cuddle〣 〣weather〣 〣ship〣 〣facts〣 〣amongus〣 〣trash〣 〣watermeme〣 〣magik〣 〣eject〣 〣viewcolor〣 〣cmm〣 〣lyrics〣 〣meme〣 〣preview〣 〣roll〣 〣wink〣 〣avatar‎〣 〣8ball‎〣 〣kill〣 〣rps‎〣 〣slap‎〣 〣achievement〣 〣skin〣 〣exam〣 〣lowercase〣 〣uppercase〣
+
+**Join our Support Server!**
+{hyper:Click Here:https://discord.gg/wU9wXdJDsV}]
+$title[Fun Commands]
+$color[$random[11111;99999]]`
+})
+bot.Command({
+  name: "/economy",
+  code: `$addTimestamp
+$description[〣work〣 〣bal〣 〣crime〣 〣fish〣 〣gift〣 〣beg〣 〣shop〣 〣inv〣 〣dep or deposit〣 〣with or withdraw‎〣 〣daily〣 〣lb or leaderboard cash〣 〣lb or leaderboard bank〣
+
+**Join our Support Server!**
+{hyper:Click Here:https://discord.gg/wU9wXdJDsV}]
+$title[Economy Commands]
+$color[$random[11111;99999]]`
+})
+bot.Command({
+  name: "/staff",
+  code: `$addTimestamp
+$description[〣purge‎〣 〣announce〣 〣nick〣 〣ban〣 〣massrole〣 〣mute〣 〣unmute‎〣 〣suggestban〣 〣suggestunban〣 〣warn〣 〣antilinks〣 〣antiswearing〣 〣setbadwords〣 〣lock〣 〣setslowmode〣 〣checkwarn‎〣 〣setwarns〣 〣banid‎〣 〣unbanid‎〣 〣kick‎〣 〣role‎〣 〣takerole‎〣 〣createchannel〣 〣deletechannel〣
+
+**Join our Support Server!**
+{hyper:Click Here:https://discord.gg/wU9wXdJDsV}]
+$title[Staff Commands]
+$color[$random[11111;99999]]`
+})
+bot.Command({
+  name: "/config",
+  code: `$addTimestamp
+$description[〣setsuggest‎〣 〣setmodlogs〣 〣setmutedrole〣 〣setwelcome〣 〣levelling〣 〣ticket setup〣 〣setmessage〣
+
+**Join our Support Server!**
+{hyper:Click Here:https://discord.gg/wU9wXdJDsV}]
+$title[Bot Config Commands]
+$color[$random[11111;99999]]`
+})
+bot.Command({
+  name: "/music",
+  code: `$addTimestamp
+$description[〣loop〣 〣lyrics〣 〣np〣 〣play〣 〣pause〣 〣playlist〣 〣pruning〣 〣queue〣 〣remove〣 〣resume〣 〣search〣 〣shuffle〣 〣skip〣 〣skipto〣 〣stop〣 〣volume〣
+
+**Join our Support Server!**
+{hyper:Click Here:https://discord.gg/wU9wXdJDsV}]
+$title[Music Commands]
+$color[$random[11111;99999]]`
 })
 
 bot.Variables({
@@ -60,6 +124,7 @@ bot.Variables({
   fish: "0",
   chocolate: "0",
   pizza: "0",
+  count: "0",
   pole: "0",
   alcohol: "0",
   noodle: "0",
@@ -76,6 +141,7 @@ bot.Variables({
   petname: "/setpet (name)",
   antilink: "off",
   chat: "",
+  suggestban: "0",
   lock: "0",
   ticketspam: "0",
   badword: "",
@@ -101,7 +167,7 @@ $botTyping
 $addTimestamp
 $title[Join our support server!]
 $description[Join our support server for suggestions or reporting bugs
-{hyper:Click here to Join!:https://discord.gg/NwqjcvT}]`
+{hyper:Click here to Join!:https://discord.gg/wU9wXdJDsV}]`
 })
 bot.Command({
     name: "/covid",
@@ -371,7 +437,7 @@ bot.Command({
     name: "/img",
     code: `$deletecommand[1ms]
 $description[]
-$image[https://flamingtext.com/net-fu/proxy_form.cgi?script=runner-logo&text=$replaceText[$message; ;+]&_loc=generate&imageoutput=true]
+$image[https://flamingtext.com/net-fu/proxy_form.cgi?script=runner-logo&text=$replaceText[$message[]; ;+]&_loc=generate&imageoutput=true]
 $footer[Requested by $username[$authorID]#$discriminator[$authorID]]
 $color[$random[11111;99999]]
 $onlyIf[$message[]!=;Provide Some Text.]`
@@ -754,16 +820,24 @@ $addTimestamp`
 bot.Command({
     name: "/suggest",
     code: `$addCmdReactions[✅]
-$footer[Suggestion By $username[$authorID]]
-$description[$message[]]
-$title[New Suggestion!]
+$description[$addField[Suggestion #$getServerVar[count];
+$message[];no]]
+$thumbnail[$authorAvatar[png;true;32]]
+$title[$username[$authorID]#$discriminator[$authorID]]
 $addReactions[✅;❌]
 $color[$random[11111;99999]]
+$setServerVar[count;$sum[$getServerVar[count];1]]
 $useChannel[$getServerVar[Suggest]]
 $addTimestamp
 $botTyping
+$onlyIf[$getUserVar[suggestban]==0;{execute:ban}]
 $suppressErrors[❌ | **You havent set a suggestion channel yet! Please do /botconfig**]
 $onlyIf[$message[1]!=;Please enter your suggestion!]`
+})
+bot.ExecutableCommand({
+name: "ban",
+code: `$description[<@$authorID> , You're suggestion banned, You cant make any suggestions!]
+$color[$random[11111;99999]]`
 })
 bot.Command({
     name: "/setmodlogs",
@@ -877,8 +951,9 @@ bot.Command({
     code: `$giveRole[$mentioned[1];$roleID[$noMentionMessage[]]]
 $description[Successfully Given $messageSlice[>1] role to <@$mentioned[1]>]
 $onlyIf[$rolePosition[$highestRole[$authorID]]<=$rolePosition[$roleID[$messageSlice[>1]]];You cant give a role higher than yours!]
-$onlyIf[$message[1]!=;❌ Please mention the user your trying to give role to and enter the name of the role your trying to give!]
-$onlyPerms[manageroles; ❌ Your missing the permission **Manage Roles**]
+$onlyIf[$roleExists[$noMentionMessage[]]==true;❌| Please select a valid role!]
+$onlyIf[$message[1]!=;❌ | Please mention the user your trying to give role to and enter the name of the role your trying to give!]
+$onlyPerms[manageroles;❌ | Your missing the permission **Manage Roles**]
 $deletecommand[1ms]`
 })
 bot.Command({
@@ -888,8 +963,9 @@ bot.Command({
 $takeRole[$mentioned[1];$roleID[$noMentionMessage[]]]
 $description[Successfully Taken $messageSlice[>1] role from <@$mentioned[1]>]
 $onlyIf[$rolePosition[$highestRole[$authorID]]<=$rolePosition[$roleID[$messageSlice[>1]]];You cant take a role higher than yours!]
-$onlyIf[$message[1]!=;❌ Please mention the user your trying to take role from and enter the name of the role your trying to take!]
-$onlyPerms[manageroles; ❌ Your missing the permission > Manage Roles]
+$onlyIf[$roleExists[$noMentionMessage[]]==true;❌| Please select a valid role!]
+$onlyIf[$message[1]!=;❌| Please mention the user your trying to take role from and enter the name of the role your trying to take!]
+$onlyPerms[manageroles;❌| Your missing the permission > Manage Roles]
 $deletecommand[1ms]`
 })
 bot.Command({
@@ -1281,7 +1357,6 @@ $description[My prefix is /
 My help page is /help]
 $title[Ping Pong!]
 $color[$random[11111;99999]]
-$addTimestamp
 $botTyping`
 })
 bot.Command({
@@ -1639,7 +1714,7 @@ $onlyIf[$message[1]==fact;]`
 })
 bot.Command({
     name: "/bird",
-    code: `$api[https://some-random-api.ml/facts/birb;fact]
+    code: `$api[https://some-random-api.ml/facts/bird;fact]
 $onlyIf[$message[1]==fact;]`
 })
 bot.Command({
@@ -2107,3 +2182,155 @@ $image[https://some-random-api.ml/canvas/invert?avatar=$replaceText[$userAvatar[
 $title[Ahh...]
 $color[$random[11111;99999]]`
 })
+bot.Command({
+  name: "/suggestban",
+  code: `$setUserVar[suggestban;1;$mentioned[1]]
+$footer[Command Author: $username[$authorID];$userAvatar[$authorID]]
+$description[$addField[Reason;
+$noMentionMessage[];no]
+
+$addField[Moderator:;
+<@$authorID>;no]
+
+$addField[User Banned:;
+<@$mentioned[1]>;no]]
+$title[Suggestion Banned!]
+$color[$random[11111;99999]]
+$onlyIf[$noMentionMessage[]!=;{execute:msg}]
+$onlyIf[$getUserVar[suggestban;$mentioned[1]]==0;{execute:user}]
+$onlyIf[$mentioned[1]!=;{execute:sb}]
+$onlyPerms[managechannels;:x: | Your missing the permission **Manage Channels**!]`
+})
+bot.ExecutableCommand({
+name: "user",
+code: `$description[<@$mentioned[1]> is already suggestion banned!]
+$color[$random[11111;99999]]`
+})
+bot.ExecutableCommand({
+name: "sb",
+code: `$description[Please mention a user whom to Suggestion Ban!]
+$color[$random[11111;99999]]`
+})
+bot.ExecutableCommand({
+name: "msg",
+code: `$description[Please provide a reason for the Suggestion Ban!]
+$color[$random[11111;99999]]`
+})
+bot.Command({
+  name: "/suggestunban",
+  code: `$setUserVar[suggestban;0;$mentioned[1]]
+$footer[Command Author: $username[$authorID];$userAvatar[$authorID]]
+$description[$addField[$addField[Moderator:;
+<@$authorID>;no]
+
+User Unbanned:;
+<@$mentioned[1]>;no]]
+$title[Suggestion Unbanned!]
+$color[$random[11111;99999]]
+$onlyIf[$getUserVar[suggestban;$mentioned[1]]==1;{execute:a}]
+$onlyIf[$mentioned[1]!=;{execute:b}]
+$onlyPerms[managechannels;:x: | Your missing the permission **Manage Channels**!]`
+})
+bot.ExecutableCommand({
+name: "a",
+code: `$description[<@$mentioned[1]> is already suggestion unbanned!]
+$color[$random[11111;99999]]`
+})
+bot.ExecutableCommand({
+name: "b",
+code: `$description[Please mention a user whom to Suggestion Unban!]
+$color[$random[11111;99999]]`
+})
+
+/**
+ * Module Imports
+ */
+const { Client, Collection } = require("discord.js");
+const { readdirSync } = require("fs");
+const { join } = require("path");
+
+let TOKEN, PREFIX;
+try {
+  const config = require("./config.json");
+  TOKEN = config.TOKEN;
+  PREFIX = config.PREFIX;
+} catch (error) {
+  TOKEN = process.env.TOKEN;
+  PREFIX = process.env.PREFIX;
+}
+
+const client = new Client({ disableMentions: "everyone" });
+
+client.login(TOKEN);
+client.commands = new Collection();
+client.prefix = PREFIX;
+client.queue = new Map();
+const cooldowns = new Collection();
+const escapeRegex = (str) => str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+
+/**
+ * Client Events
+ */
+client.on("ready", () => {
+  console.log(`${client.user.username} ready!`);
+  client.user.setActivity(`${PREFIX}help and ${PREFIX}play`, { type : "LISTENING" });
+});
+client.on("warn", (info) => console.log(info));
+client.on("error", console.error);
+
+/**
+ * Import all commands
+ */
+const commandFiles = readdirSync(join(__dirname, "commands")).filter((file) => file.endsWith(".js"));
+for (const file of commandFiles) {
+  const command = require(join(__dirname, "commands", `${file}`));
+  client.commands.set(command.name, command);
+}
+
+client.on("message", async (message) => {
+  if (message.author.bot) return;
+  if (!message.guild) return;
+
+  const prefixRegex = new RegExp(`^(<@!?${client.user.id}>|${escapeRegex(PREFIX)})\\s*`);
+  if (!prefixRegex.test(message.content)) return;
+
+  const [, matchedPrefix] = message.content.match(prefixRegex);
+
+  const args = message.content.slice(matchedPrefix.length).trim().split(/ +/);
+  const commandName = args.shift().toLowerCase();
+
+  const command =
+    client.commands.get(commandName) ||
+    client.commands.find((cmd) => cmd.aliases && cmd.aliases.includes(commandName));
+
+  if (!command) return;
+
+  if (!cooldowns.has(command.name)) {
+    cooldowns.set(command.name, new Collection());
+  }
+
+  const now = Date.now();
+  const timestamps = cooldowns.get(command.name);
+  const cooldownAmount = (command.cooldown || 1) * 1000;
+
+  if (timestamps.has(message.author.id)) {
+    const expirationTime = timestamps.get(message.author.id) + cooldownAmount;
+
+    if (now < expirationTime) {
+      const timeLeft = (expirationTime - now) / 1000;
+      return message.reply(
+        `please wait ${timeLeft.toFixed(1)} more second(s) before reusing the \`${command.name}\` command.`
+      );
+    }
+  }
+
+  timestamps.set(message.author.id, now);
+  setTimeout(() => timestamps.delete(message.author.id), cooldownAmount);
+
+  try {
+    command.execute(message, args);
+  } catch (error) {
+    console.error(error);
+    message.reply("There was an error executing that command.").catch(console.error);
+  }
+});
