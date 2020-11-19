@@ -3,12 +3,62 @@ const Dlang = require('discordbot-script')
 const discordScript = require("discordbot-script")
 
 const bot = new discordScript({
-  token: "TOKEN",
+  token: "NTU3MjEyMTY3MTkxOTIwNjgw.XI-uRQ.r_WX4McFelm8YhVfJFTxGgilxF0",
   prefix: [""]
 })
 
 bot.MessageEvent()
 bot.MessageEditEvent()
+
+bot.ExecutableCommand({
+name: "1",
+code: `$footer[Cosmo]
+$addTimestamp
+$description[<@$authorID>, You dont have the permission **Manage Channels** to run this command!]
+$title[Cosmo | Error]
+$color[$random[11111;99999]]`})
+bot.ExecutableCommand({
+name: "2",
+code: `$footer[Cosmo]
+$addTimestamp
+$description[<@$authorID>, You have not provided any suggestion! Please provide a suggestion!]
+$title[Cosmo | Error]
+$color[$random[11111;99999]]`})
+bot.ExecutableCommand({
+name: "3",
+code: `$footer[Cosmo]
+$addTimestamp
+$description[<@$authorID>, There is no suggestion channel setuped! Please tell your admins to do so using /setsuggest]
+$title[Cosmo | Error]
+$color[$random[11111;99999]]`})
+bot.ExecutableCommand({
+name: "4",
+code: `$footer[Cosmo]
+$addTimestamp
+$description[<@$authorID>, There is no ModLogs channels configured yet! Please do so using /setmodlogs]
+$title[Cosmo | Error]
+$color[$random[11111;99999]]`})
+bot.ExecutableCommand({
+name: "5",
+code: `$footer[Cosmo]
+$addTimestamp
+$description[<@$authorID>, That user is higher than you! You cant use the following command!]
+$title[Cosmo | Error]
+$color[$random[11111;99999]]`})
+bot.ExecutableCommand({
+name: "6",
+code: `$footer[Cosmo]
+$addTimestamp
+$description[<@$authorID>, You havent mentioned anyone! Please mention a user!]
+$title[Cosmo | Error]
+$color[$random[11111;99999]]`})
+bot.ExecutableCommand({
+name: "7",
+code: `$footer[Cosmo]
+$addTimestamp
+$description[<@$authorID>, You dont have the required permissions! You need the permission **Ban Members**!]
+$title[Cosmo | Error]
+$color[$random[11111;99999]]`})
 
 bot.Command({
   name: "/help",
@@ -17,14 +67,19 @@ $color[$random[1;99999]]
 $title[Help Commands]
 $description[🔰**Basic Commands**🔰
 __**/basic**__
+
 🔪**Fun Commands**🔪
 **__/fun__**
+
 💳**Economy Commands**💳
 __**/economy**__
+
 🎃**Staff Commands**🎃
 **__/staff__**
+
 📛**Bot Config Commands**📛
 **__/config__**
+
 🎵__**Music Commands**__🎵
 __**/music**__
 **Join our Support Server!**
@@ -260,16 +315,17 @@ $onlyIf[$message[1]==bank;]`
 })
 bot.Command({
     name: "/announce",
-    code: `$botTyping
-$addReactions[✅]
+    code: `$channelSendMessage[$mentionedChannels[1];
+{title:📡 Announcement!}
+{description: $messageSlice[>1]}
+$addTimestamp
+{footer: Author: $username[]}
+{color:00008B}]
+$footer[Cosmo]
+$description[Successfully sent the Announcement to <#$mentionedChannels[1]>!]
+$title[Cosmo | Announcement]
 $color[$random[11111;99999]]
-$title[Announcement! 📡]
-$description[$messageSlice[>1]]
-$suppressErrors[Please mention a channel then provide the message!]
-$footer[Sent by $username[$authorID]]
-$useChannel[$mentionedChannels[1]]
-$onlyIf[$message[1]!=;Please mention a channel where to announce.]
-$onlyAdmin[Admins Only!]`
+$onlyIf[$hasPerm[$authorID;managechannels]==true;{execute:1}]`
 })
 bot.Command({
     name: "/status",
@@ -487,7 +543,7 @@ $description[<@$authorID> Killed <@$mentioned[1]>]
 $image[$randomText[https://cdn.weeb.sh/images/HyXTiyKw-.gif;https://cdn.weeb.sh/images/r11as1tvZ.gif;https://cdn.weeb.sh/images/B1VnoJFDZ.gif;https://cdn.discordapp.com/attachments/752428043951276102/752563482641039400/tenor_1.gif;https://cdn.discordapp.com/attachments/752428043951276102/752563483106607112/tenor.gif;https://cdn.discordapp.com/attachments/752428043951276102/752563482041385090/77518.gif]]
 $deletecommand[1ms]
 $onlyIf[$authorID!=$mentioned[1];I Wish u could kill yourself]
-$onlyIf[$message[1]!=;Mention who you wanna kill.]`
+$onlyIf[$message[1]!=;{execute:6}]`
 })
 bot.Command({
     name: "/slap",
@@ -498,7 +554,7 @@ $image[https://purrbot.site/img/sfw/slap/gif/slap_0$randomText[01;02;03;04;05;06
 $color[$random[1;9999]]
 $deletecommand[1ms]
 $onlyIf[$authorID!=$mentioned[1];I Wish u could slap yourself]
-$onlyIf[$message[1]!=;Mention who you wanna slap.]`
+$onlyIf[$message[1]!=;{execute:6}]`
 })
 bot.Command({
     name: "/hug",
@@ -509,7 +565,7 @@ $color[$random[1;99999]]
 $description[ <@$authorID> hugs <@$mentioned[1]> !]
 $image[$api[https://some-random-api.ml/animu/hug;link]]
   $onlyIf[$authorID!=$mentioned[1];I Wish u could hug yourself]
-  $onlyIf[$message[1]!=;Mention who you wanna hug.]`
+  $onlyIf[$message[1]!=;{execute:6}]`
 })
 bot.Command({
     name: "/pat",
@@ -519,7 +575,7 @@ $title[Pats time]
 $description[ <@$authorID> Is patting <@$mentioned[1]> ]
 $image[$api[https://some-random-api.ml/animu/pat;link]]
   $onlyIf[$authorID!=$mentioned[1];I Wish u could pat yourself]
-  $onlyIf[$message[1]!=;Mention who you wanna pat.]`
+  $onlyIf[$message[1]!=;{execute:6}]`
 })
 bot.Command({
     name: "/kiss",
@@ -529,7 +585,7 @@ $title[**Kisses time**]
 $description[** <@$authorID> Gives <@$mentioned[1]> Kisses 😗** ]
 $image[https://purrbot.site/img/sfw/kiss/gif/kiss_0$randomText[01;02;03;04;05;06;07;08;09;10;11;12;13;14;15;16;17;18;19;20;21;22;23;24;25;26;27;28;29;30;31;32;33;34;35;36;37;38;39;40;41;42;43;44;45;46;47;48;49;50].gif]
   $onlyIf[$authorID!=$mentioned[1];I Wish u could kiss yourself]
-  $onlyIf[$message[1]!=;Mention who you wanna kiss.]`
+  $onlyIf[$message[1]!=;{execute:6}]`
 })
 bot.Command({
     name: "/lick",
@@ -540,7 +596,7 @@ $image[https://purrbot.site/img/sfw/lick/gif/lick_0$randomText[01;02;03;04;05;06
 $color[$random[1;9999]]
 $deletecommand[1ms]
 $onlyIf[$authorID!=$mentioned[1];I Wish u could lick yourself]
-$onlyIf[$message[1]!=;Mention who you wanna lick.]`
+$onlyIf[$message[1]!=;{execute:6}]`
 })
 bot.Command({
     name: "/ship",
@@ -757,20 +813,19 @@ $addTimestamp`
 })
 bot.Command({
     name: "/suggest",
-    code: `$addCmdReactions[✅]
-$description[$addField[Suggestion #$getServerVar[count];
-$message[];no]]
-$thumbnail[$authorAvatar[png;256;true]]
-$title[$username[$authorID]#$discriminator[$authorID]]
-$addReactions[✅;❌]
+    code: `$title[$username[$authorID]#$discriminator[$authorID]]
+$description[$message[]]
+$author[Suggestion #$getServerVar[count];$authorAvatar[png;true;256]]
 $color[$random[11111;99999]]
-$setServerVar[count;$sum[$getServerVar[count];1]]
+$addReactions[778160893095444510;778160929438302208]
 $useChannel[$getServerVar[Suggest]]
-$addTimestamp
-$botTyping
+$channelSendMessage[$channelID[];
+{title:Cosmo | Suggestions}
+{description:<@$authorID>, You have successfully sent your suggestion! Please wait for staff to review it in <#$getServerVar[Suggest]>!}
+{footer: Author: $username[]}]
 $onlyIf[$getUserVar[suggestban]==0;{execute:ban}]
-$suppressErrors[❌ | **You havent set a suggestion channel yet! Please do /botconfig**]
-$onlyIf[$message[1]!=;Please enter your suggestion!]`
+$onlyIf[$getServerVar[Suggest]!=;{execute:3}]
+$onlyIf[$message[1]!=;{execute:2}]`
 })
 bot.ExecutableCommand({
 name: "ban",
@@ -791,36 +846,19 @@ $addTimestamp`
 })
 bot.Command({
     name: "/ban",
-    code: `$title[Banned]
-$color[$random[11111;99999]]
-$description[
-**Banned By:**
-**<@$authorID>**
-**Banned:**
-**$username[$mentioned[1]]#$discriminator[$mentioned[1]]**
-Reason: **$noMentionMessage[]**]
-$onlyIf[$rolePosition[$highestRole[$authorID]]<=$rolePosition[$highestRole[$mentioned[1]]];]
-$onlyIf[$message[1]!=;]
-$onlyPerms[ban;Missing Ban Member Perm]`
-})
-bot.Command({
-    name: "/ban",
-    code: `
+    code: `$channelSendMessage[$getServerVar[ModLogs];
+{title:Cosmo | Banned}
+{description:**$username[$mentioned[1]]#$discriminator[$mentioned[1]]** was banned from $serverName[$guildID].}
+{field:Moderator: <@$authorID>}]
+$onlyIf[$getServerVar[ModLogs]!=;{execute:4}]
 $ban[$mentioned[1]]
-$useChannel[$getServerVar[ModLogs]]
-$title[Banned]
+$title[Cosmo | Ban System]
 $color[$random[11111;99999]]
-$description[
-**Banned By:**
-**<@$authorID>**
-**Banned:**
-**$username[$mentioned[1]]**
-Reason: **$noMentionMessage[]**]
-$deletecommand[100ms]
-$onlyIf[$getServerVar[ModLogs]!=;Please use /setmodlogs to set logs!]
-$onlyIf[$rolePosition[$highestRole[$authorID]]<=$rolePosition[$highestRole[$mentioned[1]]];You cant ban someone higher than you!]
-$onlyIf[$message[1]!=; Please mention who to ban!]
-$onlyPerms[ban;Missing Ban Member Perm]`
+$description[<@$authorID>, You have successfully banned **$username[$mentioned[1]]#$discriminator[$mentioned[1]]** from the server!]
+$deletecommand[1ms]
+$onlyIf[$rolePosition[$highestRole[$authorID]]<=$rolePosition[$highestRole[$mentioned[1]]];{execute:5}]
+$onlyIf[$message[1]!=;{execute:6}]
+$onlyPerms[ban;{execute:7}]`
 })
 bot.Command({
     name: "/unbanid",
