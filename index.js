@@ -3,7 +3,7 @@ const Dlang = require('discordbot-script')
 const discordScript = require("discordbot-script")
 
 const bot = new discordScript({
-  token: "NTU3MjEyMTY3MTkxOTIwNjgw.XI-uRQ.r_WX4McFelm8YhVfJFTxGgilxF0",
+  token: "TOKEN",
   prefix: [""]
 })
 
